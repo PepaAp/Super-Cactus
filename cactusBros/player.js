@@ -76,13 +76,13 @@ function drawWalls() {
     drawWall(wall, 700, 400, 100, 50)
 }
 function jumpSound(){
-    var audio = new Audio('./sounds/jump.mp3')
+    let audio = new Audio('./sounds/jump.mp3')
     audio.volume = 0.1
     audio.play()
 }
 
 function backGroundMusic(){
-    var audio = new Audio('./sounds/music.mp3')
+    let audio = new Audio('./sounds/music.mp3')
     audio.volume = 0.1
     audio.loop = true
     audio.play()
