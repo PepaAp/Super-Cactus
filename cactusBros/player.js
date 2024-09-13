@@ -7,13 +7,11 @@ class Player {
         this.jumpPower = -8
         this.gravity = 0.2
         this.yVelocity = 0
-        this.img = new Image()
     }
 
     update() {
         this.move()
         this.applyGravity()
-
     }
     
     move() {
@@ -32,8 +30,8 @@ class Player {
     applyGravity() {
         this.yVelocity += this.gravity
 
-        if(this.y >= canvas.height -20 - this.scale) {
-            this.y = canvas.height -20 - this.scale
+        if(this.y >= canvas.height -5 - this.scale) {
+            this.y = canvas.height -5 - this.scale
             this.yVelocity = 0
 
                if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
@@ -66,15 +64,6 @@ function drawRelativeToPlayer(x, y, w, h, color) {
     c.fillRect(x - player.x + 100, y, w, h)
 }
 
-function drawWall(wall, x, y, w, h) {
-    c.drawImage(wall, x - player.x + 100, y, w, h)
-}
-
-function drawWalls() {
-    drawWall(wall, 500, 400, 100, 50)
-    drawWall(wall, 600, 400, 100, 50)
-    drawWall(wall, 700, 400, 100, 50)
-}
 function jumpSound(){
     let audio = new Audio('./sounds/jump.mp3')
     audio.volume = 0.1
