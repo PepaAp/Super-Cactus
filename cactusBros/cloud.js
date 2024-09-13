@@ -2,22 +2,7 @@ class Cloud {
 
 
 
-    cloudRandomizerPart1(min, max) {
-        return Math.random(1) * (max - min) + min;
-    }
-    cloudRandomizerPart2(min, max) {
-        return Math.random(1) * (max - min) + min;
-    }
-    cloudRandomizerPart3(min, max) {
-        return Math.random(1) * (max - min) + min;
-    }
-    cloudRandomizerPart4(min, max) {
-        return Math.random(1) * (max - min) + min;
-    }
-    cloudRandomizerPart5(min, max) {
-        return Math.random(1) * (max - min) + min;
-    }
-    cloudRandomizerPart6(min, max) {
+    cloudRandomizer(min, max) {
         return Math.random(1) * (max - min) + min;
     }
 
