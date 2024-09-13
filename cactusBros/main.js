@@ -51,5 +51,5 @@ document.addEventListener("keyup", function(e) {
 
 backGroundMusic()
 main()
-cloudGen.cloudGen()
+
 
