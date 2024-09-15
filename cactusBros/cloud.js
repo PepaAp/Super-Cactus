@@ -22,12 +22,12 @@ class Cloud {
     overlapping() {
         for (let i = 0; i < clouds.length - 1; i++) {
             for (let j = i + 1; j < clouds.length; j++) {
-                if (clouds[i].x < clouds[j].x + clouds[j].cloudWidth &&
-                    clouds[i].x + clouds[i].cloudWidth > clouds[j].x &&
-                    clouds[i].y < clouds[j].y + clouds[j].cloudHeight &&
-                    clouds[i].y + clouds[i].cloudHeight > clouds[j].y) {
-                    clouds[i].x = this.cloudRandomizer(20, canvas.width)
-                    clouds[i].y = this.cloudRandomizer(50, 300)
+                if (clouds[i].x < clouds[j].x + clouds[j].cloudWidth + 40 &&
+                    clouds[i].x + clouds[i].cloudWidth + 40> clouds[j].x &&
+                    clouds[i].y < clouds[j].y + clouds[j].cloudHeight + 40 &&
+                    clouds[i].y + clouds[i].cloudHeight  + 40 > clouds[j].y) {
+                    clouds[i].x = player.x + canvas.width
+
                 }
             }
         }
@@ -46,10 +46,12 @@ function generateClouds(numClouds) {
 
 function outCloudReplacement() {
     for (let i = 0; i < clouds.length; i++) {
-        if ((clouds[i].x + clouds[i].cloudWidth) < 0) {
-            console.log("cloud out")
-        }else {
-            console.log("cloud in")
+        if (clouds[i].x + clouds[i].cloudWidth < player.x) {
+            clouds[i].x = player.x + canvas.width + 1
+            clouds[i].y = clouds[i].y
+        } else if (clouds[i].x > player.x + canvas.width) {
+            clouds[i].x = player.x - clouds[i].cloudWidth
+            clouds[i].y = clouds[i].y
         }
     }
 }
@@ -59,5 +61,5 @@ function drawClouds() {
 
 }
 
-generateClouds(5)
+generateClouds(7)
 

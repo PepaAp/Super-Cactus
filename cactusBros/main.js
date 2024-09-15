@@ -14,12 +14,14 @@ let wall = new Image()
 let spiderImg = new Image()
 let cloudImg = new Image()
 
+
 img.src = "./img/player.png"
 rightLook.src = "./img/playerRightSideLook.png"
 leftLook.src = "./img/playerLeftSideLook.png"
 wall.src = "./img/wall.png"
 spiderImg.src = "./img/spider.png"
 cloudImg.src = "./img/cloud.png"
+
 
 function main(){
 

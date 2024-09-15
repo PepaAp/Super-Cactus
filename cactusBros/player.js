@@ -3,7 +3,7 @@ class Player {
         this.x = 0
         this.y = 400
         this.scale = 150
-        this.speed = 1
+        this.speed = 2
         this.jumpPower = -8
         this.gravity = 0.2
         this.yVelocity = 0
