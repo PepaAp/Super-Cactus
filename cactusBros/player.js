@@ -59,11 +59,6 @@ class Player {
 
 }
 
-function drawRelativeToPlayer(x, y, w, h, color) {
-    c.fillStyle = color
-    c.fillRect(x - player.x + 100, y, w, h)
-}
-
 function jumpSound(){
     let audio = new Audio('./sounds/jump.mp3')
     audio.volume = 0.1

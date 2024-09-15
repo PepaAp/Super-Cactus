@@ -26,19 +26,22 @@ function main(){
     c.fillStyle = "skyblue"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-
-
     c.fillStyle = "green"
     c.fillRect(0, 580, canvas.width, 20)
+    drawClouds()
 
     player.update()
     spider.draw()
     wallGen.drawWalls()
 
 
+    cloud.overlapping()
+    outCloudReplacement()
+
     requestAnimationFrame(main)
 
 }
+
 
 
 document.addEventListener("keydown", function(e) {
@@ -50,6 +53,10 @@ document.addEventListener("keyup", function(e) {
 })
 
 backGroundMusic()
+
 main()
+
+
+
 
 
