@@ -7,6 +7,7 @@ class Player {
         this.jumpPower = -8
         this.gravity = 0.2
         this.yVelocity = 0
+        this.audio = new Audio('./sounds/music.mp3')
     }
 
     update() {
@@ -56,6 +57,18 @@ class Player {
         c.drawImage(leftLook, 100, this.y, this.scale, this.scale)
     }
     
+        
+    backGroundMusic(){
+        this.audio.volume = 0.1
+        this.audio.loop = true
+        this.audio.play()
+    }
+
+    backGroundMusicStop(){
+        this.audio.pause()
+        this.audio.currentTime = 0
+    }
+
 
 }
 
@@ -64,11 +77,3 @@ function jumpSound(){
     audio.volume = 0.1
     audio.play()
 }
-
-function backGroundMusic(){
-    let audio = new Audio('./sounds/music.mp3')
-    audio.volume = 0.1
-    audio.loop = true
-    audio.play()
-}
-
