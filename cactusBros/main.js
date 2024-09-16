@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas")
 const c = canvas.getContext("2d")
+const gameOverCss = document.getElementById("gameOver")
 
 let player = new Player()
 let spider = new Spider()
@@ -13,6 +14,7 @@ let leftLook = new Image()
 let wall = new Image()
 let spiderImg = new Image()
 let cloudImg = new Image()
+
 
 
 img.src = "./img/player.png"
@@ -39,12 +41,22 @@ function main(){
 
     cloud.overlapping()
     outCloudReplacement()
+    spider.hitbox()
 
     requestAnimationFrame(main)
 
 }
 
-
+function gameOver() {
+    c.save()
+    c.globalAlpha = 0.5
+    c.fillStyle = "black"
+    c.fillRect(0, 0, canvas.width, canvas.height)
+    c.fillStyle = "red"
+    c.font = "50px serif"
+    c.fillText("Game Over", 200, 300)
+    c.restore();
+}
 
 document.addEventListener("keydown", function(e) {
     keyInputs[e.code] = true

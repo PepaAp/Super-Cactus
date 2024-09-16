@@ -2,7 +2,7 @@ class Cloud {
 
     constructor(){
         this.x = this.cloudRandomizer(20, canvas.width)
-        this.y = this.cloudRandomizer(50, 300)
+        this.y = this.cloudRandomizer(50, 400)
 
         this.cloudWidth = 159
         this.cloudHeight = 118
@@ -45,13 +45,17 @@ function generateClouds(numClouds) {
 }
 
 function outCloudReplacement() {
+    
     for (let i = 0; i < clouds.length; i++) {
+
         if (clouds[i].x + clouds[i].cloudWidth < player.x) {
-            clouds[i].x = player.x + canvas.width + 1
+            clouds[i].x = player.x + canvas.width 
             clouds[i].y = clouds[i].y
+
         } else if (clouds[i].x > player.x + canvas.width) {
             clouds[i].x = player.x - clouds[i].cloudWidth
             clouds[i].y = clouds[i].y
+
         }
     }
 }
