@@ -56,17 +56,21 @@ function gameOver() {
     if (!gameOverFlag) {
         gameOverFlag = true
         gameOverSound()
+        
         player.backGroundMusicStop()
+        setTimeout(gameOverBack, 7000)
     }
     c.globalAlpha = 0.5
     c.fillStyle = "black"
     c.fillRect(0, 0, canvas.width, canvas.height)
     c.globalAlpha = 1
     c.fillStyle = "red"
-    c.font = "50px serif"
+    c.font = "50px Arial"
     c.fillText("Game Over", 200, 300)
-    s
+
+
 }
+
 
 document.addEventListener("keydown", function(e) {
     keyInputs[e.code] = true

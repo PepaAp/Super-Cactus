@@ -17,10 +17,15 @@ class Spider {
     hitbox() {
         if (this.x < player.x + player.scale - 65 &&
             this.x + this.width - 65 > player.x &&
-            this.y < player.y + player.scale - 7 &&
+            this.y < player.y + player.scale - 10 &&
             this.y + this.height > player.y) {
             gameOver()
         }
     }
 
+}
+
+function gameOverBack() {
+
+    window.location.href = "../index.html"
 }

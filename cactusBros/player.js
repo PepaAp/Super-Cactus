@@ -16,11 +16,13 @@ class Player {
     }
     
     move() {
-
+        
         if (keyInputs["KeyD"] || keyInputs["ArrowRight"]) {
+            if (gameOverFlag) return this.draw();
             this.x += this.speed
             this.drawRightSideLook()
         } else if (keyInputs["KeyA"] || keyInputs["ArrowLeft"]) {
+            if (gameOverFlag) return this.draw();
             this.x -= this.speed
             this.drawLeftSideLook()
         } else {
@@ -36,11 +38,11 @@ class Player {
             this.yVelocity = 0
 
                if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
+                    if (gameOverFlag) return;
                     jumpSound()
                     this.yVelocity = this.jumpPower
             }
         }
-
 
         this.y += this.yVelocity
     }
@@ -68,8 +70,6 @@ class Player {
         this.audio.pause()
         this.audio.currentTime = 0
     }
-
-
 }
 
 function jumpSound(){
