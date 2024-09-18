@@ -3,10 +3,12 @@ class Player {
         this.x = 0
         this.y = 400
         this.scale = 150
-        this.speed = 2
-        this.jumpPower = -8
-        this.gravity = 0.2
+        this.speed = 8
+        this.jumpPower = -10
+        this.gravity = 0.5
         this.yVelocity = 0
+        this.moveRight = false
+        this.moveLeft = false
         this.audio = new Audio('./sounds/music.mp3')
     }
 
@@ -16,17 +18,30 @@ class Player {
     }
     
     move() {
-        
+        if (gameOverFlag) {
+            return this.draw();
+        }
+    
         if (keyInputs["KeyD"] || keyInputs["ArrowRight"]) {
-            if (gameOverFlag) return this.draw();
-            this.x += this.speed
-            this.drawRightSideLook()
+            if (this.x < 0) {
+                this.x = 0
+            } else {
+                this.x += this.speed;
+                this.drawRightSideLook()
+                this.moveRight = true
+                this.moveLeft = false
+            }
         } else if (keyInputs["KeyA"] || keyInputs["ArrowLeft"]) {
-            if (gameOverFlag) return this.draw();
-            this.x -= this.speed
-            this.drawLeftSideLook()
+            if (this.x > 0) {
+                this.x -= this.speed;
+            }
+            this.drawLeftSideLook();
+            this.moveLeft = true
+            this.moveRight = false
         } else {
-            this.draw()
+            this.draw();
+            this.moveRight = false
+            this.moveLeft = false
         }
     }
 
@@ -37,10 +52,10 @@ class Player {
             this.y = canvas.height -5 - this.scale
             this.yVelocity = 0
 
-               if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
-                    if (gameOverFlag) return;
-                    jumpSound()
-                    this.yVelocity = this.jumpPower
+            if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
+                if (gameOverFlag) return
+                jumpSound()
+                this.yVelocity = this.jumpPower
             }
         }
 
@@ -59,7 +74,6 @@ class Player {
         c.drawImage(leftLook, 100, this.y, this.scale, this.scale)
     }
     
-        
     backGroundMusic(){
         this.audio.volume = 0.1
         this.audio.loop = true

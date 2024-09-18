@@ -5,6 +5,9 @@ let player = new Player()
 let spider = new Spider()
 let wallGen = new Wall()
 let cloudGen = new Cloud()
+let progress = new Progress()
+let dragon = new Dragon()
+let frame = Date.now()
 
 let keyInputs = {}
 let img = new Image()
@@ -14,6 +17,7 @@ let wall = new Image()
 let spiderImg = new Image()
 let cloudImg = new Image()
 
+
 let gameOverFlag = false
 
 img.src = "./img/player.png"
@@ -22,6 +26,7 @@ leftLook.src = "./img/playerLeftSideLook.png"
 wall.src = "./img/wall.png"
 spiderImg.src = "./img/spider.png"
 cloudImg.src = "./img/cloud.png"
+
 
 
 
@@ -42,6 +47,8 @@ function main(){
     cloud.overlapping()
     outCloudReplacement()
     spider.hitbox()
+    progress.update()
+    dragon.update()
 
     requestAnimationFrame(main)
 
@@ -60,14 +67,14 @@ function gameOver() {
         player.backGroundMusicStop()
         setTimeout(gameOverBack, 7000)
     }
-    c.globalAlpha = 0.5
+    c.globalAlpha = 0.7
     c.fillStyle = "black"
     c.fillRect(0, 0, canvas.width, canvas.height)
     c.globalAlpha = 1
     c.fillStyle = "red"
     c.font = "50px Arial"
-    c.fillText("Game Over", 200, 300)
-
+    c.fillText("Game Over", canvas.width / 2 - 200, canvas.height / 2)
+    
 
 }
 

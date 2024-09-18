@@ -26,6 +26,5 @@ class Spider {
 }
 
 function gameOverBack() {
-
     window.location.href = "../index.html"
 }
