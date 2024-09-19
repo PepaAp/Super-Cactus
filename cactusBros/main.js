@@ -19,7 +19,11 @@ let cloudImg = new Image()
 
 
 let gameOverFlag = false
+let countDownFlag1 = false
+let countDownFlag2 = false
+let countDownFlag3 = false
 let dragonDelay = 5000
+
 
 img.src = "./img/player.png"
 rightLook.src = "./img/playerRightSideLook.png"
@@ -29,7 +33,46 @@ spiderImg.src = "./img/spider.png"
 cloudImg.src = "./img/cloud.png"
 
 
+function dragonSpawn() {
+    if (!gameOverFlag) {
+        setTimeout(() => {
+            if (!gameOverFlag) {
+                dragon.update()
+            }
+            dragonSpawn()
+        }, dragonDelay)
+    }
+}
 
+function dragonCountDown() {
+    setTimeout(() => {
+        if (!gameOverFlag && !countDownFlag1) {
+            countDownFlag1 = true
+            c2.clearRect(0, 0, canvas2.width, canvas2.height)
+            c2.font = "30px Arial"
+            c2.fillStyle = "red"
+            c2.textAlign = "center"
+            console.log("dragon will spawn in 3 seconds")
+            c2.fillText("Dragon will spawn in 3 seconds", canvas.width / 2, 50)
+        }
+    }, dragonDelay - 3000)
+    
+    setTimeout(() => {
+        if (!gameOverFlag && !countDownFlag2) {
+            countDownFlag2 = true
+            c2.clearRect(0, 0, canvas2.width, canvas2.height)
+            c2.fillText("Dragon will spawn in 2 seconds", canvas.width / 2, 50)
+        }
+    }, dragonDelay - 2000)
+
+    setTimeout(() => {
+        if (!gameOverFlag && !countDownFlag3) {
+            countDownFlag3 = true
+            c2.clearRect(0, 0, canvas2.width, canvas2.height)
+            c2.fillText("Dragon will spawn in 1 second", canvas.width / 2, 50)
+        }
+    }, dragonDelay - 1000)
+}
 
 function main(){
 
@@ -47,36 +90,17 @@ function main(){
     player.update()
     spider.draw()
     wallGen.drawWalls()
+    dragonSpawn()
+
+
 
 
     cloud.overlapping()
     outCloudReplacement()
     spider.hitbox()
     progress.update()
-    if (!gameOverFlag) {
-        setInterval(() => {
-            if (!gameOverFlag) {
-                dragon.update()
-                console.log("dragon")
-            }
-        }, dragonDelay)
-        setInterval(() => {
-            if (!gameOverFlag) {
-                c.fillText("Dragon will spawn in 3 seconds", canvas.width / 2, 50) 
-            }
-        }, dragonDelay - 3000)
-        setInterval(() => {
-            if (!gameOverFlag) {
-                c.fillText("Dragon will spawn in 2 seconds", canvas.width / 2, 50) 
-            }
-        }, dragonDelay - 2000)
-        setInterval(() => {
-            if (!gameOverFlag) {
-                c.font = "30px Arial"
-                c.fillText("Dragon will spawn in 1 second", canvas.width / 2, 50) 
-            }
-        }, dragonDelay - 1000)
-    }
+    dragonCountDown()
+
     requestAnimationFrame(main)
 
 }
