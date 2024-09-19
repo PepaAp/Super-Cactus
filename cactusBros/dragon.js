@@ -24,16 +24,15 @@ class Dragon {
     }
 
     draw() {
-        c2.fillStyle = "skyblue"
-        c2.fillRect(0, 0, canvas.width, canvas.height)
+        c2.clearRect(0, 0, canvas2.width, canvas2.height)
         c2.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi)
     }
 
     hitbox() {
-        const dragonRight = this.x + this.dragWi;
-        const dragonBottom = this.y + this.dragHi;
-        const playerRight = player.x + player.scale;
-        const playerBottom = player.y + player.scale;
+        const dragonRight = this.x + this.dragWi
+        const dragonBottom = this.y + this.dragHi
+        const playerRight = player.x + player.scale
+        const playerBottom = player.y + player.scale
     
         if (this.x < playerRight &&
             dragonRight > player.x &&
@@ -44,14 +43,21 @@ class Dragon {
     }
 
     update() {
-        this.draw()
+        if (this.x > 0) {
+            this.draw()                                                                                                     // teoretickz bz to slo udelat tak ye bz ten drak bzl v arrayi a pak bych to vzmenil ya nejakz hovno
+        } else  if (this.x < 0 - this.dragWi) {
+            c2.clearRect(0, 0, canvas2.width, canvas2.height)
+        }
         this.hitbox()
         if (player.moveRight) {
-            this.x -= player.speed + this.speed
+            this.x -= player.speed + this.speed;
         } else if (player.moveLeft) {
-            this.x += player.speed - this.speed
+            this.x += player.speed - this.speed;
         } else {
-            this.x -= this.speed
+            this.x -= this.speed;
         }
+    
+        // Ensure this.x does not go below 0
+
     }
 }

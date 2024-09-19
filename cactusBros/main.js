@@ -54,11 +54,12 @@ function main(){
     progress.update()
     if (!gameOverFlag) {
         setInterval(() => {
-            dragon.update()
-            console.log("dragon spawn")
-        }, 2000)
+            if (!gameOverFlag) {
+                dragon.update()
+                console.log("dragon")
+            }
+        }, 4000)
     }
-
     requestAnimationFrame(main)
 
 }
