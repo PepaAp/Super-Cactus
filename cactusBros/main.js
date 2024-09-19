@@ -32,6 +32,10 @@ cloudImg.src = "./img/cloud.png"
 
 function main(){
 
+    if (gameOverFlag) {
+        return
+    }
+
     c.fillStyle = "skyblue"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -48,7 +52,12 @@ function main(){
     outCloudReplacement()
     spider.hitbox()
     progress.update()
-    dragon.update()
+    if (!gameOverFlag) {
+        setInterval(() => {
+            dragon.update()
+            console.log("dragon spawn")
+        }, 2000)
+    }
 
     requestAnimationFrame(main)
 
@@ -66,6 +75,7 @@ function gameOver() {
         
         player.backGroundMusicStop()
         setTimeout(gameOverBack, 7000)
+
     }
     c.globalAlpha = 0.7
     c.fillStyle = "black"

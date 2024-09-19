@@ -2,7 +2,7 @@ class Player {
     constructor(){
         this.x = 0
         this.y = 400
-        this.scale = 150
+        this.scale = 70
         this.speed = 8
         this.jumpPower = -10
         this.gravity = 0.5

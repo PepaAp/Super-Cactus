@@ -1,3 +1,6 @@
+const canvas2 = document.getElementById("canvas2")
+const c2 = canvas2.getContext("2d")
+
 let dragon1 = new Image()
 let dragon2 = new Image()
 let dragon3 = new Image()
@@ -7,7 +10,7 @@ dragon3.src = "./img/dragon3.png"
 
 class Dragon {
     constructor(){
-        this.x = canvas.width + 200
+        this.x = canvas2.width + 200
         this.speed = 8
         this.y = player.y
         this.dragHi = 60
@@ -21,7 +24,9 @@ class Dragon {
     }
 
     draw() {
-        c.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi)
+        c2.fillStyle = "skyblue"
+        c2.fillRect(0, 0, canvas.width, canvas.height)
+        c2.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi)
     }
 
     hitbox() {
@@ -30,13 +35,14 @@ class Dragon {
         const playerRight = player.x + player.scale;
         const playerBottom = player.y + player.scale;
     
-        if (this.x < playerRight - 10 &&
-            dragonRight -10 > player.x &&
-            this.y < playerBottom  - 10 &&
-            dragonBottom -10 > player.y) {
+        if (this.x < playerRight &&
+            dragonRight > player.x &&
+            this.y < playerBottom &&
+            dragonBottom > player.y) {
             gameOver()
         }
     }
+
     update() {
         this.draw()
         this.hitbox()
@@ -44,10 +50,6 @@ class Dragon {
             this.x -= player.speed + this.speed
         } else if (player.moveLeft) {
             this.x += player.speed - this.speed
-        } 
-
-        if (gameOverFlag) {
-            this.x = this.x + player.speed - this.speed
         } else {
             this.x -= this.speed
         }
