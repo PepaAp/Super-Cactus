@@ -19,6 +19,7 @@ let cloudImg = new Image()
 
 
 let gameOverFlag = false
+let dragonDelay = 5000
 
 img.src = "./img/player.png"
 rightLook.src = "./img/playerRightSideLook.png"
@@ -58,7 +59,23 @@ function main(){
                 dragon.update()
                 console.log("dragon")
             }
-        }, 4000)
+        }, dragonDelay)
+        setInterval(() => {
+            if (!gameOverFlag) {
+                c.fillText("Dragon will spawn in 3 seconds", canvas.width / 2, 50) 
+            }
+        }, dragonDelay - 3000)
+        setInterval(() => {
+            if (!gameOverFlag) {
+                c.fillText("Dragon will spawn in 2 seconds", canvas.width / 2, 50) 
+            }
+        }, dragonDelay - 2000)
+        setInterval(() => {
+            if (!gameOverFlag) {
+                c.font = "30px Arial"
+                c.fillText("Dragon will spawn in 1 second", canvas.width / 2, 50) 
+            }
+        }, dragonDelay - 1000)
     }
     requestAnimationFrame(main)
 

@@ -10,7 +10,7 @@ dragon3.src = "./img/dragon3.png"
 
 class Dragon {
     constructor(){
-        this.x = canvas2.width + 200
+        this.x = canvas2.width + 20
         this.speed = 8
         this.y = player.y
         this.dragHi = 60
