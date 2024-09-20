@@ -68,11 +68,11 @@ class Player {
     }
 
     drawRightSideLook() {
-        c.drawImage(rightLook, playerInitialPosition, this.y, this.scale, this.scale)
+        c.drawImage(rightLook, this.playerInitialPosition, this.y, this.scale, this.scale)
     }
     
     drawLeftSideLook() {
-        c.drawImage(leftLook, playerInitialPosition, this.y, this.scale, this.scale)
+        c.drawImage(leftLook, this.playerInitialPosition, this.y, this.scale, this.scale)
     }
     
     backGroundMusic(){

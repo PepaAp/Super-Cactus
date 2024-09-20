@@ -26,7 +26,6 @@ class Dragon {
 
     draw() {
         c2.clearRect(0, 0, canvas2.width, canvas2.height);
-        c2.fillRect(this.x, this.y, this.dragWi, this.dragHi);
         c2.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi);
         this.hitbox();
     }

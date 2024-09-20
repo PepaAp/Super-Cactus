@@ -8,6 +8,7 @@ let cloudGen = new Cloud()
 let progress = new Progress()
 let dragon = new Dragon()
 let frame = Date.now()
+let win = new Win()
 
 let keyInputs = {}
 let img = new Image()
@@ -49,7 +50,7 @@ function dragonCountDown() {
         if (!gameOverFlag && !countDownFlag1) {
             countDownFlag1 = true
             c2.clearRect(0, 0, canvas2.width, canvas2.height)
-            c2.font = "30px Arial"
+            c2.font = "30px Comic Sans MS"
             c2.fillStyle = "red"
             c2.textAlign = "center"
             console.log("dragon will spawn in 3 seconds")
@@ -79,6 +80,7 @@ function main(){
     if (gameOverFlag) {
         return
     }
+
 
     c.fillStyle = "skyblue"
     c.fillRect(0, 0, canvas.width, canvas.height)
@@ -120,13 +122,14 @@ function gameOver() {
         setTimeout(gameOverBack, 7000)
 
     }
-    c.globalAlpha = 0.7
-    c.fillStyle = "black"
-    c.fillRect(0, 0, canvas.width, canvas.height)
-    c.globalAlpha = 1
-    c.fillStyle = "red"
-    c.font = "50px Arial"
-    c.fillText("Game Over", canvas.width / 2 - 200, canvas.height / 2)
+    c2.globalAlpha = 0.7
+    c2.fillStyle = "black"
+    c2.fillRect(0, 0, canvas.width, canvas.height)
+    c2.globalAlpha = 1
+    c2.fillStyle = "red"
+    c2.font = "50px Comic Sans MS"
+    c2.textAlign = "center"
+    c2.fillText("Game Over", canvas.width / 2, canvas.height / 2)
 
 
 }
