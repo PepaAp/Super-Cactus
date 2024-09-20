@@ -90,7 +90,7 @@ function main(){
     drawClouds()
 
     player.update()
-    spider.draw()
+    spider.update()
     wallGen.drawWalls()
     dragonSpawn()
 
@@ -103,6 +103,7 @@ function main(){
     spider.hitbox()
     progress.update()
     dragonCountDown()
+    win.winAlert()
 
     requestAnimationFrame(main)
 
