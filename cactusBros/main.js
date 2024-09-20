@@ -33,13 +33,13 @@ spiderImg.src = "./img/spider.png"
 cloudImg.src = "./img/cloud.png"
 
 
+
 function dragonSpawn() {
     if (!gameOverFlag) {
         setTimeout(() => {
             if (!gameOverFlag) {
                 dragon.update()
             }
-            dragonSpawn()
         }, dragonDelay)
     }
 }
@@ -56,7 +56,7 @@ function dragonCountDown() {
             c2.fillText("Dragon will spawn in 3 seconds", canvas.width / 2, 50)
         }
     }, dragonDelay - 3000)
-    
+
     setTimeout(() => {
         if (!gameOverFlag && !countDownFlag2) {
             countDownFlag2 = true
@@ -95,6 +95,7 @@ function main(){
 
 
 
+
     cloud.overlapping()
     outCloudReplacement()
     spider.hitbox()
@@ -114,7 +115,7 @@ function gameOver() {
     if (!gameOverFlag) {
         gameOverFlag = true
         gameOverSound()
-        
+
         player.backGroundMusicStop()
         setTimeout(gameOverBack, 7000)
 
@@ -126,7 +127,7 @@ function gameOver() {
     c.fillStyle = "red"
     c.font = "50px Arial"
     c.fillText("Game Over", canvas.width / 2 - 200, canvas.height / 2)
-    
+
 
 }
 

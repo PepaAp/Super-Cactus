@@ -7,6 +7,7 @@ class Player {
         this.jumpPower = -10
         this.gravity = 0.5
         this.yVelocity = 0
+        this.playerInitialPosition = 100
         this.moveRight = false
         this.moveLeft = false
         this.audio = new Audio('./sounds/music.mp3')
@@ -63,15 +64,15 @@ class Player {
     }
     
     draw() {
-        c.drawImage(img, 100, this.y, this.scale, this.scale)
+        c.drawImage(img, this.playerInitialPosition, this.y, this.scale, this.scale)
     }
 
     drawRightSideLook() {
-        c.drawImage(rightLook, 100, this.y, this.scale, this.scale)
+        c.drawImage(rightLook, playerInitialPosition, this.y, this.scale, this.scale)
     }
     
     drawLeftSideLook() {
-        c.drawImage(leftLook, 100, this.y, this.scale, this.scale)
+        c.drawImage(leftLook, playerInitialPosition, this.y, this.scale, this.scale)
     }
     
     backGroundMusic(){

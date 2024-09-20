@@ -10,45 +10,47 @@ dragon3.src = "./img/dragon3.png"
 
 class Dragon {
     constructor(){
-        this.x = canvas2.width + 20
-        this.y = 0
-        this.speed = 8
-        this.dragHi = 60
-        this.dragWi = 59
-        this.dragonAni = [dragon1, dragon2, dragon3]
-        this.currentFrame = 0
-        this.playeryUpdateFlag = false
+        this.x = canvas2.width + 20;
+        this.y = 0;
+        this.speed = 8;
+        this.dragHi = 60;
+        this.dragWi = 59;
+        this.dragonAni = [dragon1, dragon2, dragon3];
+        this.currentFrame = 0;
+        this.playeryUpdateFlag = false;
 
         setInterval(() => {
-            this.currentFrame = (this.currentFrame + 1) % this.dragonAni.length
-        }, 200)
+            this.currentFrame = (this.currentFrame + 1) % this.dragonAni.length;
+        }, 200);
     }
 
     draw() {
-        c2.clearRect(0, 0, canvas2.width, canvas2.height)
-        c2.fillRect(this.x, this.y, this.dragWi, this.dragHi)
-        c2.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi)
+        c2.clearRect(0, 0, canvas2.width, canvas2.height);
+        c2.fillRect(this.x, this.y, this.dragWi, this.dragHi);
+        c2.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi);
+        this.hitbox();
     }
 
     hitbox() {
-        const dragonRight = this.x + this.dragWi
-        const dragonBottom = this.y + this.dragHi
-        const playerRight = player.x + player.scale
-        const playerBottom = player.y + player.scale
+        let dragonRight = this.x + this.dragWi;
+        let dragonBottom = this.y + this.dragHi;
+        let playerRight = player.playerInitialPosition + player.scale;
+        let playerBottom = player.y + player.scale;
 
-    
-        if (this.x < playerRight &&
+        if (this.x < playerRight && 
+            dragonRight > player.playerInitialPosition && 
+            this.y < playerBottom && 
             dragonBottom > player.y) {
-            gameOver()
+                console.log(`hit, ${this.x}, ${playerRight}`);
+                gameOver();
         }
     }
 
     update() {
         if (!this.playeryUpdateFlag){
-            this.playeryUpdateFlag = true
-            this.y = player.y - 10
-        }
-        dragon.hitbox()
+            this.playeryUpdateFlag = true;
+            this.y = player.y - 10;
+        };
         if (this.x > 0) {
             this.draw()
         } else  if (this.x < 0 - this.dragWi) {
@@ -62,8 +64,6 @@ class Dragon {
         } else {
             this.x -= this.speed;
         }
-    
-
 
     }
 }
