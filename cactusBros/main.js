@@ -53,7 +53,6 @@ function dragonCountDown() {
             c2.font = "30px Comic Sans MS"
             c2.fillStyle = "red"
             c2.textAlign = "center"
-            console.log("dragon will spawn in 3 seconds")
             c2.fillText("Dragon will spawn in 3 seconds", canvas.width / 2, 50)
         }
     }, dragonDelay - 3000)
@@ -77,6 +76,7 @@ function dragonCountDown() {
 
 function main(){
 
+
     if (gameOverFlag) {
         return
     }
@@ -93,6 +93,7 @@ function main(){
     spider.update()
     wallGen.drawWalls()
     dragonSpawn()
+    dragon.hitbox()
 
 
 
