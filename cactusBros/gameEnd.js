@@ -1,12 +1,13 @@
 class Win {
     constructor() {
-
+        this.winFlag = false
     }
-
-    winAlert() {
+    win() {
         if (player.x > 500) {
-            alert("You Win!")
-            window.location.href = "../index.html"
+            this.winFlag = true
+            if (this.winFlag) {
+                window.location.href = "../win/index.html"
+            }
         }
     }
 }

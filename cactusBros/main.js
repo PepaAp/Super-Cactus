@@ -106,6 +106,7 @@ function main(){
     dragon.hitbox()
     progress.update()
     dragonCountDown()
+    win.win()
 
     if (!gameOverFlag){
         requestAnimationFrame(main)
