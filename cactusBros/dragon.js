@@ -27,7 +27,7 @@ class Dragon {
     draw() {
         c2.clearRect(0, 0, canvas2.width, canvas2.height);
         c2.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi);
- 
+        this.hitbox();
     }
 
     hitbox() {
@@ -36,8 +36,8 @@ class Dragon {
         let playerRight = player.playerInitialPosition + player.scale - 15;
         let playerBottom = player.y + player.scale;
 
-        if (player.moveRight || player.moveLeft) {
-            playerRight -=20
+        if (playerRight || playerLeft) {
+            playerRight -= 30;
         }
 
         if (this.x < playerRight && 
@@ -59,7 +59,7 @@ class Dragon {
         } else  if (this.x < 0 - this.dragWi) {
             c2.clearRect(0, 0, canvas2.width, canvas2.height)
         }
-        
+
         if (player.moveRight) {
             this.x -= player.speed + this.speed;
         } else if (player.moveLeft) {
