@@ -7,8 +7,8 @@ let wallGen = new Wall()
 let cloudGen = new Cloud()
 let progress = new Progress()
 let dragon = new Dragon()
-let frame = Date.now()
 let win = new Win()
+let hS = new HighScore()
 
 let keyInputs = {}
 let img = new Image()
@@ -95,10 +95,10 @@ function main(){
     drawClouds()
 
     player.update()
-    spider.draw()
+    spider.update()
     wallGen.drawWalls()
     dragonSpawn()
-
+    hS.highScore()
 
     cloud.overlapping()
     outCloudReplacement()

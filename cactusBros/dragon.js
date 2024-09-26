@@ -37,14 +37,13 @@ class Dragon {
         let playerBottom = player.y + player.scale;
 
         if (playerRight || playerLeft) {
-            playerRight -= 30;
+            playerRight -= 20;
         }
 
         if (this.x < playerRight && 
             dragonRight > player.playerInitialPosition && 
             this.y < playerBottom && 
             dragonBottom > player.y) {
-                console.log(`hit, ${this.x}, ${playerRight}`);
                 gameOver();
         }
     }
