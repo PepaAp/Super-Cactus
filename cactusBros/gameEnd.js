@@ -1,8 +1,12 @@
 class Win {
+    constructor() {
+
+    }
 
     winAlert() {
-        if (player.x > 50000) {
-            window.location.href = "../win/win.html"
+        if (player.x > 500) {
+            alert("You Win!")
+            window.location.href = "../index.html"
         }
     }
 }
