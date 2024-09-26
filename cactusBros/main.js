@@ -93,7 +93,6 @@ function main(){
     spider.update()
     wallGen.drawWalls()
     dragonSpawn()
-    dragon.hitbox()
 
 
 
@@ -102,6 +101,7 @@ function main(){
     cloud.overlapping()
     outCloudReplacement()
     spider.hitbox()
+    dragon.hitbox()
     progress.update()
     dragonCountDown()
     win.winAlert()
