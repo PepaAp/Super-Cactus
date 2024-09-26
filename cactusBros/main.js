@@ -45,6 +45,16 @@ function dragonSpawn() {
     }
 }
 
+function gameOverRefresh() {
+    if (gameOverFlag) {
+        if (keyInputs["KeyR"]) {
+            window.location.reload();
+            keyInputs[e.code] = false
+            } 
+    }  
+    requestAnimationFrame(gameOverRefresh)
+}
+
 function dragonCountDown() {
     setTimeout(() => {
         if (!gameOverFlag && !countDownFlag1) {
@@ -75,12 +85,7 @@ function dragonCountDown() {
 }
 
 function main(){
-
-
-    if (gameOverFlag) {
-        return
-    }
-
+    
 
     c.fillStyle = "skyblue"
     c.fillRect(0, 0, canvas.width, canvas.height)
@@ -90,12 +95,9 @@ function main(){
     drawClouds()
 
     player.update()
-    spider.update()
+    spider.draw()
     wallGen.drawWalls()
     dragonSpawn()
-
-
-
 
 
     cloud.overlapping()
@@ -104,10 +106,10 @@ function main(){
     dragon.hitbox()
     progress.update()
     dragonCountDown()
-    win.winAlert()
 
-    requestAnimationFrame(main)
-
+    if (!gameOverFlag){
+        requestAnimationFrame(main)
+    }
 }
 
 function gameOverSound() {
@@ -132,6 +134,8 @@ function gameOver() {
     c2.font = "50px Comic Sans MS"
     c2.textAlign = "center"
     c2.fillText("Game Over", canvas.width / 2, canvas.height / 2)
+    c2.font = "30px Comic Sans MS"
+    c2.fillText("Press R to play again", canvas.width / 2, canvas.height / 2 + 50)
 
 
 }
@@ -147,6 +151,7 @@ document.addEventListener("keyup", function(e) {
 
 main()
 player.backGroundMusic()
+gameOverRefresh()
 
 
 
