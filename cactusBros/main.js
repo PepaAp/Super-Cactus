@@ -45,6 +45,8 @@ function dragonSpawn() {
     }
 }
 
+
+
 function gameOverRefresh() {
     if (gameOverFlag) {
         if (keyInputs["KeyR"]) {
@@ -107,6 +109,7 @@ function main(){
     progress.update()
     dragonCountDown()
     win.win()
+
 
     if (!gameOverFlag){
         requestAnimationFrame(main)
