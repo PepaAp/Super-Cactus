@@ -7,12 +7,13 @@ canvas {
     position: absolute;
     margin: 0 auto;
     margin-top: 100px;    
-    margin-left: 10%;
+    margin-left: auto;
+}
 
 canvas2 {
     margin: 0 auto;
     margin-top: 100px;
-    margin-left: 10%;
+    margin-left: auto;
     display: block;
     position: absolute;
 }

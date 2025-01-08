@@ -37,10 +37,11 @@ houseImg.src = "./img/house.png"
 
 
 function dragonSpawn() {
-    if (!gameOverFlag) {
+    if (!gameOverFlag ) {
         setTimeout(() => {
             if (!gameOverFlag) {
                 dragon.update()
+                console.log("dragon spawned")
             }
         }, dragonDelay)
     }
@@ -108,6 +109,7 @@ function main(){
     outCloudReplacement()
     spider.hitbox()
     dragon.hitbox()
+    wallGen.hitbox()
     progress.update()
     dragonCountDown()
     win.win()
