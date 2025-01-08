@@ -17,6 +17,7 @@ let leftLook = new Image()
 let wall = new Image()
 let spiderImg = new Image()
 let cloudImg = new Image()
+let houseImg = new Image()
 
 
 let gameOverFlag = false
@@ -32,7 +33,7 @@ leftLook.src = "./img/playerLeftSideLook.png"
 wall.src = "./img/wall.png"
 spiderImg.src = "./img/spider.png"
 cloudImg.src = "./img/cloud.png"
-
+houseImg.src = "./img/house.png"
 
 
 function dragonSpawn() {
@@ -95,6 +96,7 @@ function main(){
     c.fillStyle = "green"
     c.fillRect(0, 580, canvas.width, 20)
     drawClouds()
+    win.house()
 
     player.update()
     spider.update()
