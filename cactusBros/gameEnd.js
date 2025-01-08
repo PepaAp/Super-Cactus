@@ -1,7 +1,7 @@
 class Win {
     constructor() {
         this.winFlag = false
-        this.houseX = 100
+        this.houseX = 49900
         this.y = 185
         this.width = 400    
         this.height = 400
