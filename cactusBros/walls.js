@@ -20,8 +20,8 @@ class Wall {
 
     drawWalls() {
         this.drawWall(wall, 500, 500, this.wi, this.he)
-        this.drawWall(wall, 600, 400, this.wi, this.he)
-        this.drawWall(wall, 700, 400, this.wi, this.he)
+        this.drawWall(wall, 600, 500, this.wi, this.he)
+        this.drawWall(wall, 700, 500, this.wi, this.he)
     }
 
     hitbox(cloudX, cloudY) {
@@ -53,7 +53,13 @@ class Wall {
                 player.y + player.scale >= this.yPos[i] &&
                 this.xPos[i] + this.wi >= player.x) {
                 if (player.y + player.scale <= canvas.height) {
-                    player.x = player.x = this.xPos[i] - player.scale
+                    if (player.x + player.scale - this.xPos[i] < this.wi / 2) {
+                        player.x = this.xPos[i] - player.scale
+                        return
+                    } else if (player.x <= this.xPos[i] + this.wi){
+                        player.x = this.xPos[i] + this.wi 
+                        return
+                    }
                 } else {
                     player.yVelocity = 0
                     player.gravity = 1.5;
@@ -73,15 +79,19 @@ class Wall {
                 player.x <= this.xPos[i] + this.wi &&
                 player.y <= this.yPos[i] + this.he
             ) {
-                if (player.x - this.xPos[i] <= this.wi / 2) {
+                if (player.x + player.scale - this.xPos[i] < this.wi / 2) {
                     player.x = this.xPos[i] - player.scale
+                    console.log(player.x + player.scale - this.xPos[i], "left")
                     return
-                } else {
+                } else if (player.x <= this.xPos[i] + this.wi){
                     player.x = this.xPos[i] + this.wi 
+                    console.log(player.x + player.scale - this.xPos[i], "right")
                     return
                 }
             }
         }
+
+        
 
 
     }

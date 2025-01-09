@@ -42,7 +42,6 @@ function dragonSpawn() {
         setTimeout(() => {
             if (!gameOverFlag) {
                 dragon.update()
-                console.log("dragon spawned")
             }
         }, dragonDelay)
     }
@@ -103,13 +102,13 @@ function main(){
     player.update()
     spider.update()
     wallGen.drawWalls()
-    dragonSpawn()
+    //dragonSpawn()
     hS.highScore()
     ladder.update()
 
     cloud.overlapping()
     outCloudReplacement()
-    spider.hitbox()
+    //spider.hitbox()
     dragon.hitbox()
     wallGen.hitbox()
     progress.update()

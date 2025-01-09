@@ -5,6 +5,7 @@ class Player {
         this.scale = 70
         this.speed = 8
         this.jumpPower = -10
+        this.climbPower = -3
         this.gravity = 0.5
         this.yVelocity = 0
         this.playerInitialPosition = 100
@@ -56,11 +57,22 @@ class Player {
             if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
                 if (gameOverFlag) return
                 jumpSound()
-                this.yVelocity = this.jumpPower
+                this.yVelocity = this.jumpPower 
             }
         }
+        if(ladder.hitbox()) {
+            this.y = this.y
+            this.yVelocity = 0
 
+            if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
+                if (gameOverFlag) return
+                jumpSound()
+                this.yVelocity = this.climbPower
+            }
+        }
+        
         this.y += this.yVelocity
+        
     }
     
     draw() {
@@ -68,7 +80,7 @@ class Player {
     }
 
     drawRightSideLook() {
-        c.drawImage(rightLook, this.playerInitialPosition, this.y, this.scale, this.scale)
+        c.drawImage(rightLook, this.playerInitialPosition, this.y, 45, this.scale)
     }
     
     drawLeftSideLook() {

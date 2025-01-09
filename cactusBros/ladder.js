@@ -9,6 +9,7 @@ class Ladder {
         this.i = 0
         this.yPos = []
         this.xPos = []
+        this.ladderFlag == false
     }
 
     
@@ -28,11 +29,10 @@ class Ladder {
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.x + player.scale >= this.xPos[i] &&
                 player.x <= this.xPos[i]+this.width &&
-                player.y + player.scale >= this.yPos[i] &&
+                player.y + player.scale -1>= this.yPos[i] &&
                 player.y <= this.xPos[i] + this.height
             ) {
-                console.log("up")
-                break
+                return 1
             }
         }
     }
