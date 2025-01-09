@@ -33,7 +33,14 @@ class Ladder {
                 player.y <= this.xPos[i] + this.height
             ) {
                 return 1
+            } else {
+                player.climb = false
             }
         }
     }
+}
+function ladderSound(){
+    let audio = new Audio('./sounds/ladder.mp3')
+    audio.volume = 0.2
+    audio.play()
 }

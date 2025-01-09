@@ -39,7 +39,7 @@ class Wall {
         
                 if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
                     if (gameOverFlag) return;
-                    jumpSound();
+                    
                     player.yVelocity = player.jumpPower;
                 }
                 return;

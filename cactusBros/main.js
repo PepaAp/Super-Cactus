@@ -20,6 +20,8 @@ let spiderImg = new Image()
 let cloudImg = new Image()
 let houseImg = new Image()
 
+let dragonWarning = new Audio("./sounds/warningDragon.mp3")
+
 
 let gameOverFlag = false
 let countDownFlag1 = false
@@ -68,6 +70,8 @@ function dragonCountDown() {
             c2.fillStyle = "red"
             c2.textAlign = "center"
             c2.fillText("Dragon will spawn in 3 seconds", canvas.width / 2, 50)
+            dragonWarning.volume = 0.2
+            dragonWarning.play()
         }
     }, dragonDelay - 3000)
 

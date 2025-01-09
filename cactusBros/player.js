@@ -13,6 +13,7 @@ class Player {
         this.playerInitialPosition = 100
         this.moveRight = false
         this.moveLeft = false
+        this.climb = false
         this.audio = new Audio('./sounds/music.mp3')
     }
 
@@ -25,6 +26,7 @@ class Player {
         if (gameOverFlag) {
             return this.draw();
         }
+        this.moveDetect()
     
         if (keyInputs["KeyD"] || keyInputs["ArrowRight"]) {
             if (this.x < 0) {
@@ -32,22 +34,29 @@ class Player {
             } else {
                 this.x += this.speed;
                 this.drawRightSideLook()
-                this.moveRight = true
-                this.moveLeft = false
             }
         } else if (keyInputs["KeyA"] || keyInputs["ArrowLeft"]) {
             if (this.x > 0) {
                 this.x -= this.speed;
             }
             this.drawLeftSideLook();
-            this.moveLeft = true
-            this.moveRight = false
         } else if (ladder.hitbox()){ 
             this.drawRightSideLook()
         } else {
             this.draw();
-            this.moveRight = false
+        }
+    }
+
+    moveDetect () {
+        if (this.x > this.x) {
+            this.moveRight = true
             this.moveLeft = false
+        } else if (this.x < this.x ) {
+            this.moveLeft = true
+            this.moveRight = false
+        } else {
+            this.moveLeft = false
+            this.moveRight = false
         }
     }
 
@@ -60,7 +69,6 @@ class Player {
 
             if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
                 if (gameOverFlag) return
-                jumpSound()
                 this.yVelocity = this.jumpPower 
             }
         }
@@ -69,10 +77,16 @@ class Player {
             this.yVelocity = 0
 
             if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
-                if (gameOverFlag) return
-                jumpSound()
+                if (gameOverFlag) return 
                 this.yVelocity = this.climbPower
+                if (!this.climb) {
+                    this.climb = true
+                    ladderSound()
+                } 
+            } else if (keyInputs["KeyS"]  || keyInputs["ArrowDown"]) {
+                this.yVelocity -= this.climbPower
             }
+            
         }
         
         this.y += this.yVelocity
@@ -108,3 +122,4 @@ function jumpSound(){
     audio.volume = 0.1
     audio.play()
 }
+

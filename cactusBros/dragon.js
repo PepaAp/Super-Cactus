@@ -4,6 +4,7 @@ const c2 = canvas2.getContext("2d")
 let dragon1 = new Image()
 let dragon2 = new Image()
 let dragon3 = new Image()
+let swoosh = new Audio('./sounds/dragon.mp3')
 dragon1.src = "./img/dragon1.png"
 dragon2.src = "./img/dragon2.png"
 dragon3.src = "./img/dragon3.png"
@@ -18,6 +19,10 @@ class Dragon {
         this.dragonAni = [dragon1, dragon2, dragon3];
         this.currentFrame = 0;
         this.playeryUpdateFlag = false;
+        this.dragonFlag = false;
+        this.dragonDistance = 0;
+        this.dragonDistance2 = 0;
+
 
         setInterval(() => {
             this.currentFrame = (this.currentFrame + 1) % this.dragonAni.length;
@@ -50,10 +55,17 @@ class Dragon {
             this.playeryUpdateFlag = true;
             this.y = player.y - 10;
         };
-        if (this.x > 0) {
+        if (this.x + this.dragWi >= 0) {
+            this.dragonFlag = true
             this.draw()
-        } else  if (this.x < 0 - this.dragWi) {
+            if(this.dragonFlag) {
+                setTimeout(()=> {
+                    this.dragonSound()
+                }, 200)
+        }
+        } else {
             c2.clearRect(0, 0, canvas2.width, canvas2.height)
+            this.dragonFlag = false
         }
 
         if (player.moveRight) {
@@ -64,5 +76,9 @@ class Dragon {
             this.x -= this.speed;
         }
 
+    }
+    dragonSound(){
+        swoosh.volume = 0.5
+        swoosh.play()
     }
 }
