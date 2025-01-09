@@ -1,3 +1,4 @@
+
 class Player {
     constructor(){
         this.x = 0
@@ -15,6 +16,8 @@ class Player {
         this.moveLeft = false
         this.climb = false
         this.audio = new Audio('./sounds/music.mp3')
+        this.jumpS = new Audio('./sounds/jump.mp3')
+
     }
 
     update() {
@@ -70,6 +73,7 @@ class Player {
             if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
                 if (gameOverFlag) return
                 this.yVelocity = this.jumpPower 
+                jumpSound()
             }
         }
         if(ladder.hitbox()) {
@@ -80,6 +84,8 @@ class Player {
                 if (gameOverFlag) return 
                 this.yVelocity = this.climbPower
                 if (!this.climb) {
+                    this.jumpS.pause()
+                    this.jumpS.currentTime = 0;
                     this.climb = true
                     ladderSound()
                 } 
@@ -118,8 +124,9 @@ class Player {
 }
 
 function jumpSound(){
-    let audio = new Audio('./sounds/jump.mp3')
-    audio.volume = 0.1
-    audio.play()
+    player.jumpS.pause();
+    player.jumpS.currentTime = 0; 
+    player.jumpS.volume = 0.1;
+    player.jumpS.play();
 }
 

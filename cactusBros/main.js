@@ -21,6 +21,8 @@ let cloudImg = new Image()
 let houseImg = new Image()
 
 let dragonWarning = new Audio("./sounds/warningDragon.mp3")
+let jumpS = new Audio('./sounds/jump.mp3')
+
 
 
 let gameOverFlag = false
@@ -48,6 +50,7 @@ function dragonSpawn() {
         }, dragonDelay)
     }
 }
+
 
 
 
@@ -106,14 +109,14 @@ function main(){
     player.update()
     spider.update()
     wallGen.drawWalls()
-    dragonSpawn()
+    //dragonSpawn()
     hS.highScore()
     ladder.update()
 
     cloud.overlapping()
     outCloudReplacement()
     spider.hitbox()
-    dragon.hitbox()
+    //dragon.hitbox()
     wallGen.hitbox()
     progress.update()
     dragonCountDown()
