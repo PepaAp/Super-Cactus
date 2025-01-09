@@ -19,7 +19,7 @@ class Wall {
     }
 
     drawWalls() {
-        this.drawWall(wall, 500, 400, this.wi, this.he)
+        this.drawWall(wall, 500, 500, this.wi, this.he)
         this.drawWall(wall, 600, 400, this.wi, this.he)
         this.drawWall(wall, 700, 400, this.wi, this.he)
     }
@@ -52,17 +52,21 @@ class Wall {
                 this.xPos[i] <= player.x + player.scale  &&
                 player.y + player.scale >= this.yPos[i] &&
                 this.xPos[i] + this.wi >= player.x) {
-                player.yVelocity = 0
-                player.gravity = 1.5;
-                player.y = this.yPos[i] + this.he +1;
-                return;
+                if (player.y + player.scale <= canvas.height) {
+                    player.x = player.x = this.xPos[i] - player.scale
+                } else {
+                    player.yVelocity = 0
+                    player.gravity = 1.5;
+                    player.y = this.yPos[i] + this.he +1;
+                    return;
+                }
             
             } else {
                 player.gravity = 0.5;
             }
         } 
          
-        //left checker
+        //left and right checker
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.x + player.scale >= this.xPos[i] &&
                 player.y + player.scale -20  >= this.yPos[i] &&
@@ -71,10 +75,8 @@ class Wall {
             ) {
                 if (player.x - this.xPos[i] <= this.wi / 2) {
                     player.x = this.xPos[i] - player.scale
-                    console.log("left")
                     return
                 } else {
-                    console.log("right ")
                     player.x = this.xPos[i] + this.wi 
                     return
                 }

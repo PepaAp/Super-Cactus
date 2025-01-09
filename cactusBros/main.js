@@ -9,6 +9,7 @@ let progress = new Progress()
 let dragon = new Dragon()
 let win = new Win()
 let hS = new HighScore()
+let ladder = new Ladder()
 
 let keyInputs = {}
 let img = new Image()
@@ -104,6 +105,7 @@ function main(){
     wallGen.drawWalls()
     dragonSpawn()
     hS.highScore()
+    ladder.update()
 
     cloud.overlapping()
     outCloudReplacement()
