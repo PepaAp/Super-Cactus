@@ -33,12 +33,9 @@ class Dragon {
     hitbox() {
         let dragonRight = this.x + this.dragWi;
         let dragonBottom = this.y + this.dragHi;
-        let playerRight = player.playerInitialPosition + player.scale;
-        let playerBottom = player.y + player.scale - 3;
+        let playerRight = player.playerInitialPosition + player.width;
+        let playerBottom = player.y + player.height;
 
-        if (playerRight || playerLeft) {
-            playerRight -= 20;
-        }
 
         if (this.x < playerRight && 
             dragonRight > player.playerInitialPosition && 

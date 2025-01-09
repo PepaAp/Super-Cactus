@@ -30,11 +30,11 @@ class Wall {
         
         //top checker
         for (let i = 0; i < this.xPos.length; i++) {
-            if (player.y + player.scale <= this.yPos[i] + 5 && 
-                this.xPos[i] <= player.x + player.scale - 20 && 
-                player.y + player.scale >= this.yPos[i] && 
+            if (player.y + player.height <= this.yPos[i] + 5 && 
+                this.xPos[i] <= player.x + player.width - 20 && 
+                player.y + player.height >= this.yPos[i] && 
                 this.xPos[i] + this.wi >= player.x) {
-                player.y = this.yPos[i] - player.scale;
+                player.y = this.yPos[i] - player.height;
                 player.yVelocity = 0;
         
                 if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
@@ -49,12 +49,12 @@ class Wall {
         //bottom checker 
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.y <= this.yPos[i] + this.he && 
-                this.xPos[i] <= player.x + player.scale  &&
-                player.y + player.scale >= this.yPos[i] &&
+                this.xPos[i] <= player.x + player.width  &&
+                player.y + player.height >= this.yPos[i] &&
                 this.xPos[i] + this.wi >= player.x) {
-                if (player.y + player.scale <= canvas.height) {
-                    if (player.x + player.scale - this.xPos[i] < this.wi / 2) {
-                        player.x = this.xPos[i] - player.scale
+                if (player.y + player.height <= canvas.height) {
+                    if (player.x + player.width - this.xPos[i] < this.wi / 2) {
+                        player.x = this.xPos[i] - player.width
                         return
                     } else if (player.x <= this.xPos[i] + this.wi){
                         player.x = this.xPos[i] + this.wi 
@@ -74,18 +74,18 @@ class Wall {
          
         //left and right checker
         for (let i = 0; i < this.xPos.length; i++) {
-            if (player.x + player.scale >= this.xPos[i] &&
-                player.y + player.scale -20  >= this.yPos[i] &&
+            if (player.x + player.width >= this.xPos[i] &&
+                player.y + player.height -20  >= this.yPos[i] &&
                 player.x <= this.xPos[i] + this.wi &&
                 player.y <= this.yPos[i] + this.he
             ) {
-                if (player.x + player.scale - this.xPos[i] < this.wi / 2) {
-                    player.x = this.xPos[i] - player.scale
-                    console.log(player.x + player.scale - this.xPos[i], "left")
+                if (player.x + player.width - this.xPos[i] < this.wi / 2) {
+                    player.x = this.xPos[i] - player.width
+                    console.log(player.x + player.width - this.xPos[i], "left")
                     return
                 } else if (player.x <= this.xPos[i] + this.wi){
                     player.x = this.xPos[i] + this.wi 
-                    console.log(player.x + player.scale - this.xPos[i], "right")
+                    console.log(player.x + player.width - this.xPos[i], "right")
                     return
                 }
             }

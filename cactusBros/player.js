@@ -3,6 +3,8 @@ class Player {
         this.x = 0
         this.y = 400
         this.scale = 70
+        this.width = 40
+        this.height = 70
         this.speed = 8
         this.jumpPower = -10
         this.climbPower = -3
@@ -40,6 +42,8 @@ class Player {
             this.drawLeftSideLook();
             this.moveLeft = true
             this.moveRight = false
+        } else if (ladder.hitbox()){ 
+            this.drawRightSideLook()
         } else {
             this.draw();
             this.moveRight = false
@@ -50,8 +54,8 @@ class Player {
     applyGravity() {
         this.yVelocity += this.gravity
 
-        if(this.y >= canvas.height -5 - this.scale) {
-            this.y = canvas.height -5 - this.scale
+        if(this.y >= canvas.height -5 - this.height) {
+            this.y = canvas.height -5 - this.height
             this.yVelocity = 0
 
             if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
@@ -76,15 +80,15 @@ class Player {
     }
     
     draw() {
-        c.drawImage(img, this.playerInitialPosition, this.y, this.scale, this.scale)
+        c.drawImage(img, this.playerInitialPosition, this.y, this.width+ 30 , this.height)
     }
 
     drawRightSideLook() {
-        c.drawImage(rightLook, this.playerInitialPosition, this.y, 45, this.scale)
+        c.drawImage(rightLook, this.playerInitialPosition, this.y, this.width , this.height)
     }
     
     drawLeftSideLook() {
-        c.drawImage(leftLook, this.playerInitialPosition, this.y, this.scale, this.scale)
+        c.drawImage(leftLook, this.playerInitialPosition, this.y, this.width , this.height)
     }
     
     backGroundMusic(){

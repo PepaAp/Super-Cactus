@@ -27,9 +27,9 @@ class Ladder {
 
     hitbox () {
         for (let i = 0; i < this.xPos.length; i++) {
-            if (player.x + player.scale >= this.xPos[i] &&
+            if (player.x + player.width >= this.xPos[i] &&
                 player.x <= this.xPos[i]+this.width &&
-                player.y + player.scale -1>= this.yPos[i] &&
+                player.y + player.height -1>= this.yPos[i] &&
                 player.y <= this.xPos[i] + this.height
             ) {
                 return 1

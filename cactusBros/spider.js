@@ -27,9 +27,9 @@ class Spider {
     }
 
     hitbox() {
-        if (this.x < player.x + player.scale - 28 &&
-            this.x + this.width - 15 > player.x &&
-            this.y < player.y + player.scale - 7 &&
+        if (this.x < player.x + player.width  &&
+            this.x + this.width  > player.x &&
+            this.y < player.y + player.height &&
             this.y + this.height > player.y) {
             gameOver();
         }
