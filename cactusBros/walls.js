@@ -59,7 +59,7 @@ class Wall {
                 this.xPos[i] + this.wi >= player.x) {
                     player.yVelocity = 0
                     player.gravity = 1.5
-                    player.y = this.yPos + this.he
+                    /* player.y = this.yPos + this.he
 
                     
                     if (player.x + player.width - this.xPos[i] < this.wi / 2) {
@@ -69,7 +69,7 @@ class Wall {
                         player.x = this.xPos[i] + this.wi 
                         return
                     }
-                    return
+                    return */
                 } else {
                     player.gravity = 0.5
                 }
