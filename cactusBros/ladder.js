@@ -1,0 +1,8 @@
+class Progress {
+    constructor() {
+        
+    }
+
+    update() {
+    }
+}

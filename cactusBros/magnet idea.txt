@@ -1,0 +1,13 @@
+for (let i = 0; i < this.xPos.length; i++) {
+            if (player.y <= this.yPos[i] + this.he +5 && 
+                this.xPos[i] <= player.x + player.scale  &&
+                player.y + player.scale >= this.yPos[i] &&
+                this.xPos[i] + this.wi >= player.x) {
+                player.yVelocity = 0
+                player.gravity = 1.5;
+                player.y = this.yPos[i] + this.he +1;
+                break;
+            } else {
+                player.gravity = 0.5;
+            }
+        } 

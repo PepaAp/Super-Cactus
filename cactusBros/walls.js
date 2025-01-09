@@ -19,37 +19,68 @@ class Wall {
     }
 
     drawWalls() {
-        this.drawWall(wall, 500, 500, this.wi, this.he)
-        this.drawWall(wall, 600, 500, this.wi, this.he)
-        this.drawWall(wall, 700, 500, this.wi, this.he)
+        this.drawWall(wall, 500, 400, this.wi, this.he)
+        this.drawWall(wall, 600, 400, this.wi, this.he)
+        this.drawWall(wall, 700, 400, this.wi, this.he)
     }
 
     hitbox(cloudX, cloudY) {
-        //bottom checker 
-                for (let i = 0; i < this.xPos.length; i++) {
-            if (player.y - player.scale <= this.yPos[i] + this.he && 
-                this.xPos[i] <= player.x + player.scale - 20 && 
-                player.y >= this.yPos[i] && 
-                this.xPos[i] + this.wi >= player.x) {
-                player.gravity = 1.5;
-                player.y = this.yPos[i] + this.he;
-                break;
-            } else {
-                player.gravity = 0.5;
-            }
-        }
+
+        
         
         //top checker
         for (let i = 0; i < this.xPos.length; i++) {
-            if (player.y <= this.yPos[i] && 
+            if (player.y + player.scale <= this.yPos[i] + 5 && 
                 this.xPos[i] <= player.x + player.scale - 20 && 
                 player.y + player.scale >= this.yPos[i] && 
                 this.xPos[i] + this.wi >= player.x) {
                 player.y = this.yPos[i] - player.scale;
                 player.yVelocity = 0;
-                break;
+        
+                if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
+                    if (gameOverFlag) return;
+                    jumpSound();
+                    player.yVelocity = player.jumpPower;
+                }
+                return;
             }
         }
+
+        //bottom checker 
+        for (let i = 0; i < this.xPos.length; i++) {
+            if (player.y <= this.yPos[i] + this.he && 
+                this.xPos[i] <= player.x + player.scale  &&
+                player.y + player.scale >= this.yPos[i] &&
+                this.xPos[i] + this.wi >= player.x) {
+                player.yVelocity = 0
+                player.gravity = 1.5;
+                player.y = this.yPos[i] + this.he +1;
+                return;
+            
+            } else {
+                player.gravity = 0.5;
+            }
+        } 
+         
+        //left checker
+        for (let i = 0; i < this.xPos.length; i++) {
+            if (player.x + player.scale >= this.xPos[i] &&
+                player.y + player.scale -20  >= this.yPos[i] &&
+                player.x <= this.xPos[i] + this.wi &&
+                player.y <= this.yPos[i] + this.he
+            ) {
+                if (player.x - this.xPos[i] <= this.wi / 2) {
+                    player.x = this.xPos[i] - player.scale
+                    console.log("left")
+                    return
+                } else {
+                    console.log("right ")
+                    player.x = this.xPos[i] + this.wi 
+                    return
+                }
+            }
+        }
+
 
     }
         
