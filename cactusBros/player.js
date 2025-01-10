@@ -104,7 +104,7 @@ class Player {
     }
     
     draw() {
-        c.drawImage(img, this.playerInitialPosition, this.y, this.width+ 30 , this.height)
+        c.drawImage(img, this.playerInitialPosition, this.y, this.width , this.height)
     }
 
     drawRightSideLook() {
