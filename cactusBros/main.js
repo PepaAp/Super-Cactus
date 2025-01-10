@@ -10,6 +10,7 @@ let dragon = new Dragon()
 let win = new Win()
 let hS = new HighScore()
 let ladder = new Ladder()
+let magnet = new Magnet()
 
 let keyInputs = {}
 let img = new Image()
@@ -112,6 +113,7 @@ function main(){
     setInterval(dragonSpawn(), 3000)
     hS.highScore()
     ladder.update()
+    magnet.update()
 
     cloud.overlapping()
     outCloudReplacement()
