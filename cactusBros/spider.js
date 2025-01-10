@@ -11,18 +11,21 @@ class Spider {
         this.spiderFlag = false
     }
 
-       draw(x, y) {
-        this.xPos.push(x);
-        this.yPos.push(y);
-        c.drawImage(spiderImg, x - player.x, y, this.width, this.height);
+    draw(x, y) {
+        if (!this.xPos.includes(x) || !this.yPos.includes(y)) {
+            this.xPos.push(x)
+            this.yPos.push(y)
+        }
+        c.drawImage(spiderImg, x - player.x +100, y, this.width, this.height);
     }
+
     spider() {
         if (!this.spiderFlag) {
             this.draw(200, 575)
             this.spiderFlag = true
         }
-        this.draw(this.xPos[0], this.yPos[0])
         
+        this.draw(this.xPos[0], this.yPos[0])
     }
 
     update() {
@@ -34,11 +37,10 @@ class Spider {
                 this.direction *= -1; 
                 this.moveDistance = 0; 
             }
-            this.hitbox()
-            this.xPos.pop()
-            return
-            
+                    
         }
+        
+        this.hitbox()
     }
 
     hitbox() {
@@ -50,8 +52,12 @@ class Spider {
                 gameOver();
                 return
             }
-            c2.fillRect(this.xPos[i], this.yPos[i], this.width, this.height)
         }
+        
+    }
+    drawHitbox(index) {
+        c.strokeStyle = 'red';
+        c.strokeRect(this.xPos[index] - player.x, this.yPos[index], this.width, this.height);
     }
 }
 
