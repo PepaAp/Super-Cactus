@@ -2,6 +2,7 @@
 class Player {
     constructor(){
         this.x = 0
+        this.lastX = 0
         this.y = 400
         this.scale = 70
         this.width = 40
@@ -23,14 +24,14 @@ class Player {
     update() {
         this.move()
         this.applyGravity()
+        this.moveDetect()
+        this.lastX = this.x
     }
     
     move() {
         if (gameOverFlag) {
             return this.draw();
         }
-        this.moveDetect()
-    
         if (keyInputs["KeyD"] || keyInputs["ArrowRight"]) {
             if (this.x < 0) {
                 this.x = 0
@@ -51,15 +52,18 @@ class Player {
     }
 
     moveDetect () {
-        if (this.x > this.x) {
+        if (this.lastX < this.x ) {
             this.moveRight = true
             this.moveLeft = false
-        } else if (this.x < this.x ) {
+            return
+        } else if (this.lastX > this.x ) {
             this.moveLeft = true
             this.moveRight = false
+            return
         } else {
             this.moveLeft = false
             this.moveRight = false
+            return
         }
     }
 

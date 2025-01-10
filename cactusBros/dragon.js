@@ -69,12 +69,15 @@ class Dragon {
         }
 
         if (player.moveRight) {
-            this.x -= player.speed + this.speed;
+            this.x -= player.speed + this.speed +3;
         } else if (player.moveLeft) {
             this.x += player.speed - this.speed -3;
         } else {
             this.x -= this.speed;
         }
+
+
+
 
     }
     dragonSound(){
