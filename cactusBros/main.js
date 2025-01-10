@@ -115,7 +115,6 @@ function main(){
 
     cloud.overlapping()
     outCloudReplacement()
-    spider.hitbox()
     dragon.hitbox()
     wallGen.hitbox()
     progress.update()
