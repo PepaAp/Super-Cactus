@@ -109,7 +109,7 @@ function main(){
     player.update()
     spider.update()
     wallGen.drawWalls()
-    dragonSpawn()
+    setInterval(dragonSpawn(), 3000)
     hS.highScore()
     ladder.update()
 

@@ -25,7 +25,7 @@ class Wall {
         
         this.drawWall(wall, 850, 400, this.wi, this.he)
         this.drawWall(wall, 1080, 380, this.wi, this.he)
-        this.drawWall(wall, 0, 500, this.wi, this.he)
+        this.drawWall(wall, 1400, 350, this.wi, this.he)
     }
 
     hitbox() {
@@ -59,16 +59,17 @@ class Wall {
                 this.xPos[i] + this.wi >= player.x) {
                     if (player.x + player.width - this.xPos[i] < this.yPos[i] + this.he - player.y ||
                         this.xPos[i] + this.wi - player.x <this.yPos[i] + this.he - player.y) {
-                        if (player.x + player.width - this.xPos[i] < this.wi / 2) {
-                            player.x = this.xPos[i] - player.width 
-                            return
-                        } else{
-                            player.x = this.xPos[i] + this.wi
-                            return
-                        }
+                            if (player.x + player.width - this.xPos[i] < this.wi / 2) {
+                                player.x = this.xPos[i] - player.width 
+                                return
+                            } else{
+                                player.x = this.xPos[i] + this.wi
+                                return
+                            }
                     } else {
                         player.yVelocity = 0
                         player.gravity = 1.5
+                        player.y = this.yPos[i] + this.he
                     }
 
                     
