@@ -1,15 +1,15 @@
 class Win {
     constructor() {
         this.winFlag = false
-        this.houseX = 49900
+        this.houseX = 9900
         this.y = 185
         this.width = 400    
         this.height = 400
     }
     win() {
-        if (player.x > 50000) {
+        if (player.x > 10000) {
             this.winFlag = true
-            player.x = 50000
+            player.x = 10000
             if (this.winFlag) {
                 window.location.href = "../win/index.html"
             }
@@ -17,7 +17,7 @@ class Win {
     }
     
     house () {
-        c.drawImage(houseImg, this.houseX - player.x + 100, this.y, this.width, this.height)
+        c.drawImage(houseImg, this.houseX - player.x + player.playerInitialPosition, this.y, this.width, this.height)
     }
 
 }

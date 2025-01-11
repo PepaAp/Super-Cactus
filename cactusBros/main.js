@@ -20,7 +20,7 @@ let leftLook = new Image()
 let wall = new Image()
 let spiderImg = new Image()
 let cloudImg = new Image()
-let houseImg = new Image()
+let houseImg = new Image() 
 
 let dragonWarning = new Audio("./sounds/warningDragon.mp3")
 let jumpS = new Audio('./sounds/jump.mp3')
@@ -110,19 +110,19 @@ function main(){
 
     player.update()
     spider.update()
+    wallGen.hitbox()
     wallGen.drawWalls()
     pipe.update()
-    setInterval(dragonSpawn(), 3000)
+    //setInterval(dragonSpawn(), 3000)
     hS.highScore()
     ladder.update()
     magnet.update()
 
     cloud.overlapping()
     outCloudReplacement()
-    dragon.hitbox()
-    wallGen.hitbox()
+    //dragon.hitbox()
     progress.update()
-    dragonCountDown()
+    //dragonCountDown()
     win.win()
 
 
@@ -169,8 +169,11 @@ document.addEventListener("keyup", function(e) {
 })
 
 main()
+spider.distance *= spider.xPos.length
 player.backGroundMusic()
 gameOverRefresh()
+
+player.x = 2850
 
 
 

@@ -14,16 +14,21 @@ class Magnet {
             this.xPos.push(x)
             this.yPos.push(y)
         }
-        c.drawImage(magnetImg, x - player.x +100, y, this.wi, this.he)
+        c.drawImage(magnetImg, x - player.x + player.playerInitialPosition, y, this.wi, this.he)
     }
 
     magnetMaker() {
-        this.draw(100, 450)
+        this.draw(2980, 250)
+        this.draw(4200, 100)
+        this.draw(4300, 100)
+        this.draw(5100, 250)
+        this.draw(5200, 250)
+        this.draw(5300, 250)
     }
 
     update() {
-        this.magnetMaker()
         this.hitbox()
+        this.magnetMaker()
     }
 
     hitbox() {
@@ -43,8 +48,16 @@ class Magnet {
                             }
                     } else {
                         player.yVelocity = 0
-                        player.gravity = 1.5;
-                        player.y = this.yPos[i] + this.he -1;
+                        player.gravity = 1.5
+                        player.y = this.yPos[i] + this.he -1.5
+                        if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
+                            if (gameOverFlag) return;
+                            jumpSound()
+                            player.yVelocity = player.jumpPower
+                        } else if (keyInputs["KeyS"] || keyInputs["ArrowDown"]) {
+                            if (gameOverFlag) return;
+                            player.y = this.yPos[i] + this.he
+                        }
                         return
                     }
 

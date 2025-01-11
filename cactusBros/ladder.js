@@ -5,7 +5,7 @@ ladderImg.src = "./img/ladder.png"
 class Ladder {
     constructor() {
         this.width = 15
-        this.height = 50
+        this.height = 150
         this.i = 0
         this.yPos = []
         this.xPos = []
@@ -13,15 +13,20 @@ class Ladder {
     }
 
     
-    drawLadder(wall, x, y, w, h) {
+    drawLadder(x, y) {
         this.xPos.push(x)
         this.yPos.push(y)
-        c.drawImage(ladderImg, x - player.x + 100, y, w, h)
+        c.drawImage(ladderImg, x - player.x + player.playerInitialPosition, y, this.width, this.height)
         this.i++
     }
 
+    draw() {
+        this.drawLadder(1450-this.width, 450)
+        this.drawLadder(3750-this.width, 300)
+    }
+
     update() {
-        this.drawLadder(wall, 485, 500, this.width, this.height)
+        this.draw()
         this.hitbox()
     }
 
@@ -32,9 +37,11 @@ class Ladder {
                 player.y + player.height -1>= this.yPos[i] &&
                 player.y <= this.xPos[i] + this.height
             ) {
+                wallGen.doubleWall = true
                 return 1
             } else {
                 player.climb = false
+                wallGen.doubleWall = false
             }
         }
     }

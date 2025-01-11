@@ -15,21 +15,28 @@ class Pipe {
             this.xPos.push(x)
             this.yPos.push(y)
         }
-        c.drawImage(pipeImg, x - player.x + 100, y, this.width, this.height)
+        c.drawImage(pipeImg, x - player.x + player.playerInitialPosition, y, this.width, this.height)
     }
 
-    magnetMaker() {
-        this.draw(1800, 550)
+    pipeMaker() {
+        this.draw(900, 440)
+        this.draw(2850, 400)
+        this.draw(4600, 400)
+        this.draw(5800, 400)
+        this.draw(7400, 550)
+        this.draw(7650, 450)
+        this.draw(7950, 352)
+        this.draw(9600, 450)
     }
 
     update() {
         this.hitbox()
-        this.magnetMaker()
+        this.pipeMaker()
     }
 
     hitbox() {
         for (let i = 0; i < this.xPos.length; i++) {
-            if (player.y + player.height <= this.yPos[i] + 5 && 
+            if (player.y + player.height - player.yVelocity <= this.yPos[i] + 5 && 
                 this.xPos[i] <= player.x + player.width  && 
                 player.y + player.height >= this.yPos[i] && 
                 this.xPos[i] + this.width >= player.x) {

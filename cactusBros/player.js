@@ -3,7 +3,7 @@ class Player {
     constructor(){
         this.x = 0
         this.lastX = 0
-        this.y = 400
+        this.y = 300
         this.scale = 70
         this.width = 40
         this.height = 70
@@ -12,7 +12,7 @@ class Player {
         this.climbPower = -3
         this.gravity = 0.5
         this.yVelocity = 0
-        this.playerInitialPosition = 100
+        this.playerInitialPosition = 200
         this.moveRight = false
         this.moveLeft = false
         this.climb = false
