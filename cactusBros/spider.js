@@ -53,18 +53,14 @@ class Spider {
 
     hitbox() {
         for(let i = 0; i < this.xPos.length; i++) {
-            if (this.xPos[i] < player.x + player.width  &&
+            if (this.xPos[i] <= player.x + player.width  &&
                 this.xPos[i] + this.width  > player.x &&
                 this.yPos[i] + this.height > player.y &&
-                this.yPos[i] < player.y + player.height- 5) {
+                this.yPos[i] <= player.y + player.height- 5) {
                 gameOver();
                 return
             }
         }
         
     }
-}
-
-function gameOverBack() {
-    window.location.href = "../index.html";
 }

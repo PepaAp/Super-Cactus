@@ -129,6 +129,8 @@ function main(){
     if (!gameOverFlag){
         requestAnimationFrame(main)
     }
+    
+    hS.checkPoint()
 }
 
 function gameOverSound() {
@@ -159,6 +161,10 @@ function gameOver() {
 
 }
 
+function gameOverBack() {
+                window.location.href = "../index.html"
+}
+
 
 document.addEventListener("keydown", function(e) {
     keyInputs[e.code] = true
@@ -173,7 +179,7 @@ spider.distance *= spider.xPos.length
 player.backGroundMusic()
 gameOverRefresh()
 
-player.x = 2850
+player.x = player.checkPoint
 
 
 

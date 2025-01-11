@@ -13,6 +13,7 @@ class Player {
         this.gravity = 0.5
         this.yVelocity = 0
         this.playerInitialPosition = 200
+        this.checkPoint = 0
         this.moveRight = false
         this.moveLeft = false
         this.climb = false
@@ -49,6 +50,15 @@ class Player {
         } else {
             this.draw();
         }
+
+        if (keyInputs["KeyU"]) {
+            window.localStorage.setItem("checkPoint", 0);
+            this.checkPoint = 0
+            window.location.reload();
+            keyInputs[e.code] = false
+            
+        }
+        
     }
 
     moveDetect () {

@@ -40,8 +40,11 @@ class Pipe {
                 this.xPos[i] <= player.x + player.width  && 
                 player.y + player.height >= this.yPos[i] && 
                 this.xPos[i] + this.width >= player.x) {
+                player.checkPoint = this.xPos[i] + (this.width/2) - (player.width/2)
                 player.y = this.yPos[i] - player.height;
                 player.yVelocity = 0;
+                //text pro informaci ye bzl pridan checkpoint
+                
         
                 if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
                     if (gameOverFlag) return;

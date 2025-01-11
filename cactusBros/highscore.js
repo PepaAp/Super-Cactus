@@ -17,4 +17,20 @@ class HighScore {
         this.hS = window.localStorage.getItem("highScore");
         c.fillText(`High Score: ${this.hS}`, canvas.width - 250, 30);
     }
+    
+    checkPoint() {
+
+        if (window.localStorage.getItem("highScore") === null) {
+            window.localStorage.setItem("highScore", 0);
+        }
+
+        const lastcheckPoint = Number(window.localStorage.getItem("highScore"));
+        const currentChechPoint = Number(player.checkPoint);
+
+        if (currentChechPoint > lastcheckPoint) {
+            window.localStorage.setItem("checkPoint", currentChechPoint);
+        }
+
+        player.checkPoint = Number(window.localStorage.getItem("checkPoint"))
+    }
 }
