@@ -11,6 +11,7 @@ let win = new Win()
 let hS = new HighScore()
 let ladder = new Ladder()
 let magnet = new Magnet()
+let pipe = new Pipe()
 
 let keyInputs = {}
 let img = new Image()
@@ -110,6 +111,7 @@ function main(){
     player.update()
     spider.update()
     wallGen.drawWalls()
+    pipe.update()
     setInterval(dragonSpawn(), 3000)
     hS.highScore()
     ladder.update()

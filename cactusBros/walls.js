@@ -9,23 +9,23 @@ class Wall {
         
     }
     
-    drawWall(wall, x, y, w, h) {
+    drawWall(x, y) {
         this.xPos.push(x)
         this.yPos.push(y)
 
         this.hitbox(this.xPos[this.i], this.yPos[this.i])
-        c.drawImage(wall, x - player.x + 100, y, w, h)
+        c.drawImage(wall, x - player.x + 100, y, this.wi, this.he)
         this.i++
     }
 
     drawWalls() {
-        this.drawWall(wall, 500, 500, this.wi, this.he)
-        this.drawWall(wall, 600, 500, this.wi, this.he)
-        this.drawWall(wall, 700, 500, this.wi, this.he)
+        this.drawWall(500, 500)
+        this.drawWall(600, 500)
+        this.drawWall(700, 500)
         
-        this.drawWall(wall, 850, 400, this.wi, this.he)
-        this.drawWall(wall, 1080, 380, this.wi, this.he)
-        this.drawWall(wall, 1400, 350, this.wi, this.he)
+        this.drawWall(850, 400)
+        this.drawWall(1080, 380)
+        this.drawWall(1400, 350)
     }
 
     hitbox() {
@@ -77,12 +77,6 @@ class Wall {
                     player.gravity = 0.5
                 }
         }   
-         
-    
-
-        
-
-
     }
         
 }
