@@ -20,6 +20,7 @@ class HighScore {
     
     checkPoint() {
 
+
         if (window.localStorage.getItem("highScore") === null) {
             window.localStorage.setItem("highScore", 0);
         }
@@ -32,5 +33,7 @@ class HighScore {
         }
 
         player.checkPoint = Number(window.localStorage.getItem("checkPoint"))
+
+        
     }
 }

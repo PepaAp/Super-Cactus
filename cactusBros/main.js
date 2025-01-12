@@ -188,3 +188,5 @@ player.backGroundMusic()
 gameOverRefresh()
 
 player.x = player.checkPoint
+
+

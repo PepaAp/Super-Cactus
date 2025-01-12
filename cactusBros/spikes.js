@@ -45,7 +45,7 @@ class Spikes {
             if (this.xPos[i] <= player.x + player.width  &&
                 this.xPos[i] + this.width  > player.x &&
                 this.yPos[i] + this.height > player.y &&
-                this.yPos[i] <= player.y + player.height -5) {
+                this.yPos[i] <= player.y + player.height) {
                 gameOver();
                 return
             }

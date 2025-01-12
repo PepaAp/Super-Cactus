@@ -51,7 +51,18 @@ class Pipe {
                         this.xPos[5] + this.width >= player.x)) {
                     } else {
                         player.checkPoint = this.xPos[i] + (this.width/2) - (player.width/2)
+                        c2.font = "30px Comic Sans MS"
+                        c2.fillStyle = "red"
+                        c2.textAlign = "center"
+                        c2.fillText("Checkpoint added", canvas.width / 2, 150)
+                        setTimeout(()=>{
+                            if (!gameOverFlag)
+                                c2.clearRect(0, 0, canvas2.width, canvas2.height)
+                        }, 3000)
                     }
+
+                    
+
                     player.y = this.yPos[i] - player.height;
                     player.yVelocity = 0;
                     //text pro informaci ye bzl pridan checkpoint
@@ -63,7 +74,7 @@ class Pipe {
                         player.yVelocity = player.jumpPower;
                     }
                     return;
-            }
+            } 
         }
 
         for (let i = 0; i < this.xPos.length; i++) {
