@@ -52,7 +52,7 @@ class Player {
         }
 
         if (keyInputs["KeyU"]) {
-            window.localStorage.setItem("checkPoint", 7400);
+            window.localStorage.setItem("checkPoint", 0);
             window.location.reload();
             keyInputs[e.code] = false
             
