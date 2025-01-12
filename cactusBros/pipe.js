@@ -40,18 +40,29 @@ class Pipe {
                 this.xPos[i] <= player.x + player.width  && 
                 player.y + player.height >= this.yPos[i] && 
                 this.xPos[i] + this.width >= player.x) {
-                player.checkPoint = this.xPos[i] + (this.width/2) - (player.width/2)
-                player.y = this.yPos[i] - player.height;
-                player.yVelocity = 0;
-                //text pro informaci ye bzl pridan checkpoint
+
+                    if ((player.y + player.height - player.yVelocity <= this.yPos[4] + 5 && 
+                        this.xPos[4] <= player.x + player.width  && 
+                        player.y + player.height >= this.yPos[4] && 
+                        this.xPos[4] + this.width >= player.x) || 
+                        (player.y + player.height - player.yVelocity <= this.yPos[5] + 5 && 
+                        this.xPos[5] <= player.x + player.width  && 
+                        player.y + player.height >= this.yPos[5] && 
+                        this.xPos[5] + this.width >= player.x)) {
+                    } else {
+                        player.checkPoint = this.xPos[i] + (this.width/2) - (player.width/2)
+                    }
+                    player.y = this.yPos[i] - player.height;
+                    player.yVelocity = 0;
+                    //text pro informaci ye bzl pridan checkpoint
                 
         
-                if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
-                    if (gameOverFlag) return;
-                    jumpSound()
-                    player.yVelocity = player.jumpPower;
-                }
-                return;
+                    if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
+                        if (gameOverFlag) return;
+                        jumpSound()
+                        player.yVelocity = player.jumpPower;
+                    }
+                    return;
             }
         }
 

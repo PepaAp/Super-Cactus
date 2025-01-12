@@ -33,8 +33,6 @@ class Wall {
         this.drawWall(3750, 350)
         this.drawWall(3750, 300)
         this.drawWall(4000, 300)
-        this.drawWall(4900, 550)
-        this.drawWall(4900, 500)
         this.drawWall(4900, 450)
         this.drawWall(5350, 420)
         this.drawWall(5450, 420)

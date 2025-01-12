@@ -12,6 +12,7 @@ let hS = new HighScore()
 let ladder = new Ladder()
 let magnet = new Magnet()
 let pipe = new Pipe()
+let spikes = new Spikes()
 
 let keyInputs = {}
 let img = new Image()
@@ -97,6 +98,15 @@ function dragonCountDown() {
     }, dragonDelay - 1000)
 }
 
+function updateAll() {
+    player.update()
+    pipe.update()
+    magnet.update()
+    ladder.update()
+    spider.update()
+    progress.update()
+}
+
 function main(){
     
 
@@ -106,24 +116,22 @@ function main(){
     c.fillStyle = "green"
     c.fillRect(0, 580, canvas.width, 20)
     drawClouds()
+    spikes.update()
+    
+    updateAll()
+    
     win.house()
 
-    player.update()
-    spider.update()
-    wallGen.hitbox()
-    wallGen.drawWalls()
-    pipe.update()
     //setInterval(dragonSpawn(), 3000)
     hS.highScore()
-    ladder.update()
-    magnet.update()
 
     cloud.overlapping()
     outCloudReplacement()
     //dragon.hitbox()
-    progress.update()
     //dragonCountDown()
     win.win()
+    wallGen.hitbox()
+    wallGen.drawWalls()
 
 
     if (!gameOverFlag){
@@ -180,7 +188,3 @@ player.backGroundMusic()
 gameOverRefresh()
 
 player.x = player.checkPoint
-
-
-
-

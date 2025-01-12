@@ -3,7 +3,7 @@ class Player {
     constructor(){
         this.x = 0
         this.lastX = 0
-        this.y = 300
+        this.y = 200
         this.scale = 70
         this.width = 40
         this.height = 70
@@ -52,8 +52,7 @@ class Player {
         }
 
         if (keyInputs["KeyU"]) {
-            window.localStorage.setItem("checkPoint", 0);
-            this.checkPoint = 0
+            window.localStorage.setItem("checkPoint", 7400);
             window.location.reload();
             keyInputs[e.code] = false
             

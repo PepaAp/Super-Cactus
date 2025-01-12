@@ -37,6 +37,7 @@ class Spider {
     }
 
     update() {
+        this.hitbox()
         this.spider()
         for (let i = 0; i < this.xPos.length; i++) {
             this.xPos[i] += this.direction * this.speed;
@@ -48,7 +49,6 @@ class Spider {
                     
         }
         
-        this.hitbox()
     }
 
     hitbox() {
