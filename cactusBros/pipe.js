@@ -41,14 +41,7 @@ class Pipe {
                 player.y + player.height >= this.yPos[i] && 
                 this.xPos[i] + this.width >= player.x) {
 
-                    if ((player.y + player.height - player.yVelocity <= this.yPos[4] + 5 && 
-                        this.xPos[4] <= player.x + player.width  && 
-                        player.y + player.height >= this.yPos[4] && 
-                        this.xPos[4] + this.width >= player.x) || 
-                        (player.y + player.height - player.yVelocity <= this.yPos[5] + 5 && 
-                        this.xPos[5] <= player.x + player.width  && 
-                        player.y + player.height >= this.yPos[5] && 
-                        this.xPos[5] + this.width >= player.x)) {
+                    if (i == 5) {
                     } else {
                         player.checkPoint = this.xPos[i] + (this.width/2) - (player.width/2)
                         c2.font = "30px Comic Sans MS"

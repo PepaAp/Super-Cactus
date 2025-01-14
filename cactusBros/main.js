@@ -98,14 +98,12 @@ function dragonCountDown() {
     }, dragonDelay - 1000)
 }
 
-function updateAll() {
-    player.update()
-    pipe.update()
-    magnet.update()
-    ladder.update()
-    spider.update()
-    progress.update()
+function dragonUpdate() {
+    dragonSpawn()
+    //dragon.hitbox()
+    //dragonCountDown()
 }
+
 
 function main(){
     
@@ -117,21 +115,24 @@ function main(){
     c.fillRect(0, 580, canvas.width, 20)
     drawClouds()
     spikes.update()
-    
-    updateAll()
-    
     win.house()
+    
+    player.update()
+    magnet.update()
+    wallGen.hitbox()
+    wallGen.drawWalls()
+    pipe.update()
+    ladder.update()
+    spider.update()
+    progress.update()
+    
 
-    //setInterval(dragonSpawn(), 3000)
     hS.highScore()
 
     cloud.overlapping()
     outCloudReplacement()
-    //dragon.hitbox()
-    //dragonCountDown()
     win.win()
-    wallGen.hitbox()
-    wallGen.drawWalls()
+    setInterval(dragonUpdate(), 3000)
 
 
     if (!gameOverFlag){
