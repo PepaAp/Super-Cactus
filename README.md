@@ -1,5 +1,5 @@
-Super Cactus Bros
-Super Cactus Bros is a 2d game ispired by Super Mario Bros. The whole game is made in pure JavaScript, HTML and CSS. It is a project started for learning JS and became a part of my school halfyear project.
+Super Cactus Bros<br />
+Super Cactus Bros is a 2d game ispired by Super Mario Bros. The whole game is made in pure JavaScript, HTML and CSS. It is a project started for learning JS and became a part of my school halfyear project.<br />
 
 Controls<br />
 To move you can use WSAD, arrowkeys and space for jumping. <br />
