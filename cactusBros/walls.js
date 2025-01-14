@@ -21,9 +21,6 @@ class Wall {
     drawWalls() {
         this.drawWall(300, 550)
         this.drawWall(600, 470)
-        this.drawWall(1450, 550)
-        this.drawWall(1450, 500)
-        this.drawWall(1450, 450)
         this.drawWall(1650, 400)
         this.drawWall(2000, 400)
         this.drawWall(2100, 400)

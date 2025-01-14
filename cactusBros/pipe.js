@@ -20,6 +20,7 @@ class Pipe {
 
     pipeMaker() {
         this.draw(900, 440)
+        this.draw(1450, 450)
         this.draw(2850, 400)
         this.draw(4600, 400)
         this.draw(5800, 400)

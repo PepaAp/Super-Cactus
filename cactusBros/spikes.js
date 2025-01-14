@@ -18,6 +18,9 @@ class Spikes {
     }
 
     spikes() {
+        for (let i = 1500; i < 2850; i+=100){
+            this.draw(i, 590)
+        }
         for (let i = 2950; i < 4650; i+=100){
             this.draw(i, 590)
         }
