@@ -1,6 +1,7 @@
 class Cloud {
 
     constructor(){
+        //randomizes the clouds position
         this.x = this.cloudRandomizer(20, canvas.width)
         this.y = this.cloudRandomizer(50, 400)
 
@@ -15,11 +16,13 @@ class Cloud {
 
 
     draw() {
+        //draws clouds
         c.drawImage(cloudImg, this.x - player.x, this.y, this.cloudWidth, this.cloudHeight)
     }
 
 
     overlapping() {
+        //checks for overlaping clouds
         for (let i = 0; i < clouds.length - 1; i++) {
             for (let j = i + 1; j < clouds.length; j++) {
                 if (clouds[i].x < clouds[j].x + clouds[j].cloudWidth + 40 &&

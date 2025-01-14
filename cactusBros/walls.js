@@ -1,6 +1,5 @@
 class Wall {
     constructor() {
-        this.i = 0
         this.wi = 100
         this.he = 50
         this.doubleWall = false
@@ -11,14 +10,15 @@ class Wall {
     }
     
     drawWall(x, y) {
+        //pushing x y coordinates and draws wall
         this.xPos.push(x)
         this.yPos.push(y)
 
         c.drawImage(wall, x - player.x + player.playerInitialPosition, y, this.wi, this.he)
-        this.i++
     }
 
     drawWalls() {
+        //drawing walls
         this.drawWall(300, 550)
         this.drawWall(600, 470)
         this.drawWall(1650, 400)
@@ -38,7 +38,6 @@ class Wall {
         this.drawWall(7050, 550)
         this.drawWall(7150, 550)
         this.drawWall(8600, 550)
-        
         this.drawWall(8600, 550)
         this.drawWall(8600, 550)
         this.drawWall(8900, 480)
@@ -57,6 +56,7 @@ class Wall {
                     this.xPos[i] <= player.x + player.width -1 && 
                     player.y + player.height >= this.yPos[i] && 
                     this.xPos[i] + this.wi >= player.x+1) {
+                    //allows player to jump from top of the wall
                     player.y = this.yPos[i] - player.height;
                     player.yVelocity = 0;
             
@@ -70,13 +70,14 @@ class Wall {
             }
         }
 
-        //bottom checker 
+        //bottom and sides checker 
         for (let i = 0; i < this.xPos.length; i++) {
             // Check if the player is colliding with the current wall
             if (player.y <= this.yPos[i] + this.he && 
                 this.xPos[i] <= player.x + player.width &&
                 player.y + player.height >= this.yPos[i] &&
                 this.xPos[i] + this.wi >= player.x) {
+                    //check for collision on the sides
                     if (player.x + player.width - this.xPos[i] < this.yPos[i] + this.he - player.y ||
                         this.xPos[i] + this.wi - player.x <this.yPos[i] + this.he - player.y) {
                             if (player.x + player.width - this.xPos[i] < this.wi / 2) {
@@ -87,6 +88,7 @@ class Wall {
                                 return
                             }
                     } else {
+                        //drops player from bottom of the wall
                         player.yVelocity = 0
                         player.gravity = 1.5
                         player.y = this.yPos[i] + this.he

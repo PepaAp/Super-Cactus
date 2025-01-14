@@ -10,6 +10,7 @@ class Spikes {
     }
 
     draw(x, y) {
+        //pushes provided x and y positions to an array if they already didn´t exist and draws spikes
         if (!this.xPos.includes(x) || !this.yPos.includes(y)) {
             this.xPos.push(x)
             this.yPos.push(y)
@@ -18,20 +19,21 @@ class Spikes {
     }
 
     spikes() {
-        for (let i = 1500; i < 2850; i+=100){
+        //draws spikes 
+        for (let i = 1500; i < 2850; i+=this.width){
             this.draw(i, 590)
         }
-        for (let i = 2950; i < 4650; i+=100){
+        for (let i = 2950; i < 4650; i+=this.width){
             this.draw(i, 590)
         }
-        for (let i = 4700; i < 7050; i+=100){
+        for (let i = 4700; i < 7050; i+=this.width){
             this.draw(i, 590)
         }
-        for (let i = 7500; i < 7950; i+=100){
+        for (let i = 7500; i < 7950; i+=this.width){
             this.draw(i, 590)
         }
         this.draw(8080, 590)
-        for (let i = 8700; i < 9600; i+=100){
+        for (let i = 8700; i < 9600; i+=this.width){
             this.draw(i, 590)
         }
 
@@ -39,11 +41,11 @@ class Spikes {
 
     update() {
         this.spikes()
-        
         this.hitbox()
     }
 
     hitbox() {
+        //collision between player and spikes causes gameover
         for(let i = 0; i < this.xPos.length; i++) {
             if (this.xPos[i] <= player.x + player.width  &&
                 this.xPos[i] + this.width  > player.x &&

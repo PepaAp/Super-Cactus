@@ -12,6 +12,7 @@ class Spider {
     }
 
     draw(x, y) {
+        //pushes provided x and y positions to an array if they already didn´t exist and draws the spider
         if (!this.xPos.includes(x) || !this.yPos.includes(y)) {
             this.xPos.push(x)
             this.yPos.push(y)
@@ -20,6 +21,7 @@ class Spider {
     }
 
     spider() {
+        //drawing spiders default positions
         if (!this.spiderFlag) {
             this.draw(1000, 575)
             this.draw(1200, 575)
@@ -30,6 +32,7 @@ class Spider {
             this.draw(8380, 575)
             this.spiderFlag = true
         }
+        //updates spiders
         for (let i = 0; i < this.xPos.length; i ++) {
             this.draw(this.xPos[i], this.yPos[i])
         }
@@ -39,6 +42,7 @@ class Spider {
     update() {
         this.hitbox()
         this.spider()
+        //moves spiders to sides aand changes their direction if the distance travled has been overcame
         for (let i = 0; i < this.xPos.length; i++) {
             this.xPos[i] += this.direction * this.speed;
             this.moveDistance += this.direction * this.speed;
@@ -52,6 +56,7 @@ class Spider {
     }
 
     hitbox() {
+        //if player collides with the spiders gameOver is called
         for(let i = 0; i < this.xPos.length; i++) {
             if (this.xPos[i] <= player.x + player.width  &&
                 this.xPos[i] + this.width  > player.x &&

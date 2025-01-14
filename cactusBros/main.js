@@ -55,7 +55,13 @@ function dragonSpawn() {
 }
 
 
-
+function checkpointReset () {
+    if (keyInputs["KeyU"]) {
+        window.localStorage.setItem("checkPoint", 0);
+        window.location.reload();
+        keyInputs[e.code] = false
+    }
+}
 
 function gameOverRefresh() {
     if (gameOverFlag) {
@@ -116,23 +122,23 @@ function main(){
     drawClouds()
     spikes.update()
     win.house()
+
     
     player.update()
     magnet.update()
     wallGen.hitbox()
     wallGen.drawWalls()
+    
+    dragonSpawn()
     pipe.update()
     ladder.update()
     spider.update()
     progress.update()
-    
-
     hS.highScore()
 
     cloud.overlapping()
     outCloudReplacement()
     win.win()
-    setInterval(dragonUpdate(), 3000)
 
 
     if (!gameOverFlag){
@@ -140,6 +146,7 @@ function main(){
     }
     
     hS.checkPoint()
+    checkpointReset()
 }
 
 function gameOverSound() {

@@ -11,6 +11,7 @@ class Pipe {
 
     
     draw(x, y) {
+        //drwaing the image of a pipe and pushing the coordinates provided to an array
         if (!this.xPos.includes(x) || !this.yPos.includes(y)) {
             this.xPos.push(x)
             this.yPos.push(y)
@@ -19,6 +20,7 @@ class Pipe {
     }
 
     pipeMaker() {
+        //creates pipes
         this.draw(900, 440)
         this.draw(1450, 450)
         this.draw(2850, 400)
@@ -36,30 +38,25 @@ class Pipe {
     }
 
     hitbox() {
+        //checking of top side of pipes
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.y + player.height - player.yVelocity <= this.yPos[i] + 5 && 
                 this.xPos[i] <= player.x + player.width  && 
                 player.y + player.height >= this.yPos[i] && 
                 this.xPos[i] + this.width >= player.x) {
-
-                    if (i == 5) {
+                    //6th pipe should not crate a checkpoint so is does nothing otherwise it creates a checkpoint and informs the player
+                    if (i == 6) {
                     } else {
                         player.checkPoint = this.xPos[i] + (this.width/2) - (player.width/2)
                         c2.font = "30px Comic Sans MS"
                         c2.fillStyle = "red"
                         c2.textAlign = "center"
                         c2.fillText("Checkpoint added", canvas.width / 2, 150)
-                        setTimeout(()=>{
-                            if (!gameOverFlag)
-                                c2.clearRect(0, 0, canvas2.width, canvas2.height)
-                        }, 3000)
                     }
 
-                    
-
+                    //sets the player to stay on top of the pipe but also allowes the player to jump 
                     player.y = this.yPos[i] - player.height;
                     player.yVelocity = 0;
-                    //text pro informaci ye bzl pridan checkpoint
                 
         
                     if (keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
@@ -70,12 +67,14 @@ class Pipe {
                     return;
             } 
         }
-
+        
+        //checks the collision of the sides of pipes with player
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.y <= this.yPos[i] + this.height && 
                 this.xPos[i] <= player.x + player.width &&
                 player.y + player.height >= this.yPos[i] &&
                 this.xPos[i] + this.width >= player.x) {
+                    //checking to wich side is plyer closer and sets his possition there
                     if (player.x + player.width - this.xPos[i] < this.yPos[i] + this.height - player.y ||
                         this.xPos[i] + this.width - player.x <this.yPos[i] + this.height - player.y) {
                             if (player.x + player.width - this.xPos[i] < this.width / 2) {
@@ -86,8 +85,6 @@ class Pipe {
                                 return
                             }
                     }                    
-                } else {
-                    player.gravity = 0.5
                 }
         }   
     }

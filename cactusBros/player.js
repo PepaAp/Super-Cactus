@@ -30,6 +30,7 @@ class Player {
     }
     
     move() {
+        //basic movement of the player
         if (gameOverFlag) {
             return this.draw();
         }
@@ -50,17 +51,10 @@ class Player {
         } else {
             this.draw();
         }
-
-        if (keyInputs["KeyU"]) {
-            window.localStorage.setItem("checkPoint", 0);
-            window.location.reload();
-            keyInputs[e.code] = false
-            
-        }
-        
     }
 
     moveDetect () {
+        //finds out wich way is player moving 
         if (this.lastX < this.x ) {
             this.moveRight = true
             this.moveLeft = false
@@ -77,22 +71,27 @@ class Player {
     }
 
     applyGravity() {
+        //gives player gravity
         this.yVelocity += this.gravity
 
         if(this.y >= canvas.height -5 - this.height) {
+            //makes sure the player cant fall through the floor
             this.y = canvas.height -5 - this.height
+            //if player is on floor his yVelocity is set to 0
             this.yVelocity = 0
 
+            //checks for jump inputs and applyes jump power
             if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
                 if (gameOverFlag) return
                 this.yVelocity = this.jumpPower 
                 jumpSound()
             }
         }
+        //if player is on the ladder the ladder will act as a ground so he can climb up and also stay on the ladder
         if(ladder.hitbox()) {
             this.y = this.y
             this.yVelocity = 0
-
+            //if player "jumps" on the ladder it moves him up my the climb power and also playes the laddersound otherwise if player presses S or arrowDown he slowly climbs down
             if(keyInputs["KeyW"] || keyInputs["Space"] || keyInputs["ArrowUp"]) {
                 if (gameOverFlag) return 
                 this.yVelocity = this.climbPower
@@ -111,6 +110,8 @@ class Player {
         this.y += this.yVelocity
         
     }
+
+    //functions for drawing the player images
     
     draw() {
         c.drawImage(img, this.playerInitialPosition, this.y, this.width , this.height)
@@ -125,18 +126,21 @@ class Player {
     }
     
     backGroundMusic(){
+        //function for playing BG music
         this.audio.volume = 0.1
         this.audio.loop = true
         this.audio.play()
     }
 
     backGroundMusicStop(){
+        //stops BG music
         this.audio.pause()
         this.audio.currentTime = 0
     }
 }
 
 function jumpSound(){
+    //function for jump sound. If there was a jump sound playing already it stops it and resets the time
     player.jumpS.pause();
     player.jumpS.currentTime = 0; 
     player.jumpS.volume = 0.1;
