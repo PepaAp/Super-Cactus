@@ -106,14 +106,15 @@ function dragonCountDown() {
 
 function dragonUpdate() {
     dragonSpawn()
-    //dragon.hitbox()
-    //dragonCountDown()
+    dragon.hitbox()
+    dragonCountDown()
 }
 
 
 function main(){
     
 
+    hS.checkPoint()
     c.fillStyle = "skyblue"
     c.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -129,7 +130,7 @@ function main(){
     wallGen.hitbox()
     wallGen.drawWalls()
     
-    dragonSpawn()
+    dragonUpdate()
     pipe.update()
     ladder.update()
     spider.update()
@@ -145,7 +146,7 @@ function main(){
         requestAnimationFrame(main)
     }
     
-    hS.checkPoint()
+
 }
 
 function gameOverSound() {
