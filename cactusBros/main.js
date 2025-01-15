@@ -145,8 +145,7 @@ function main(){
         requestAnimationFrame(main)
     }
     
-    hS.checkPoint()
-    checkpointReset()
+    hS.checkPoint()
 }
 
 function gameOverSound() {
