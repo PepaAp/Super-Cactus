@@ -31,6 +31,7 @@ class HighScore {
         if (currentChechPoint > lastcheckPoint) {
             window.localStorage.setItem("checkPoint", currentChechPoint);
         }
+checkpointReset()
 
         player.checkPoint = Number(window.localStorage.getItem("checkPoint"))
 
