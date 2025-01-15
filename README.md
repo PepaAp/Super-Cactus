@@ -5,17 +5,17 @@
 
 ## Controls<br />
 To move you can use $\textsf{\color{yellow}{WSAD, arrowkeys and space}}$ for jumping. <br />
-$\textsf{\color{red}{U}}$ can be used to reset previous checkpoints. Acts like a reset for the game. Each checkpoint is stored locally.<br />
-$\textsf{\color{red}{W/↑/space}}$ can be used on a ladder to go up.<br />
-$\textsf{\color{red}{S/↓}}$ can be used to go down on a ladder.<br />
-$\textsf{\color{red}{W/↑/space}}$ while on a magnet can be used to jump if on the corner.<br />
-$\textsf{\color{red}{S/↓}}$ while on a magnet can be used to let go.<br />
+$\textsf{\color{yellow}{U}}$ can be used to reset previous checkpoints. Acts like a reset for the game. Each checkpoint is stoyellow locally.<br />
+$\textsf{\color{yellow}{W/↑/space}}$ can be used on a ladder to go up.<br />
+$\textsf{\color{yellow}{S/↓}}$ can be used to go down on a ladder.<br />
+$\textsf{\color{yellow}{W/↑/space}}$ while on a magnet can be used to jump if on the corner.<br />
+$\textsf{\color{yellow}{S/↓}}$ while on a magnet can be used to let go.<br />
 
 ## Blocks<br />
 Wall - walls can be used like piece of ground. You can walk on them and jump from them.<br />
 Pipe - pipes are functioning like a checkpoints. If you get on top of a pipe a message will inform you that a checkpoint has been created. Once you die you will respawn on top of the pipe.<br />
 Ladder - ladders are just ladders. You can go up and down.<br />
-Magnet - magnet will hold on to you and wont let go. To let go you can either press S/↓ to fall, press W/↑/space to jump while on the corner or just go out of the range to fall.<br />
+Magnet - magnet will hold on to you and wont let go. To let go you can either press $\textsf{\color{yellow}{S/↓}}$ to fall, press $\textsf{\color{yellow}{W/↑/space}}$ to jump while on the corner or just go out of the range to fall.<br />
 Spikes - spikes will kill you instantly if you touch them.<br />
 
 ## Entities<br />
@@ -25,6 +25,6 @@ Dragon - dragons spawn every dedicated amount of time. Spawnpoint of a dragon is
 ## Objective<br />
 To win the game you have to travel 100m to your home. Once you get there you will be redirected to the win site.<br />
 
-Any suggestions, bug reports or critisism is welcome.<br />
-
 ### Have fun!
+
+> Any suggestions, bug reports or critisism is welcome.<br />
