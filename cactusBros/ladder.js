@@ -31,19 +31,26 @@ class Ladder {
     }
 
     hitbox () {
+        let climbs = false;
+
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.x + player.width >= this.xPos[i] &&
                 player.x <= this.xPos[i]+this.width &&
                 player.y + player.height -1>= this.yPos[i] &&
                 player.y <= this.xPos[i] + this.height
             ) {
-                wallGen.doubleWall = true
-                return 1
-            } else {
-                player.climb = false
-                wallGen.doubleWall = false
-            }
+                climbs = true;
+            } 
         }
+
+        if (climbs) {
+            wallGen.doubleWall = true;
+        } else {
+            wallGen.doubleWall = false;
+            player.climb = false;
+        }
+
+        return climbs;
     }
 }
 function ladderSound(){

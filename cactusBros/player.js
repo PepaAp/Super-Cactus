@@ -96,8 +96,6 @@ class Player {
                 if (gameOverFlag) return 
                 this.yVelocity = this.climbPower
                 if (!this.climb) {
-                    this.jumpS.pause()
-                    this.jumpS.currentTime = 0;
                     this.climb = true
                     ladderSound()
                 } 
