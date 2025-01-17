@@ -2,14 +2,16 @@ class Win {
     constructor() {
         this.winFlag = false
         this.houseX = 9900
+        this.endMap = 10000
         this.y = 185
         this.width = 400    
         this.height = 400
     }
     win() {
-        if (player.x > 10000) {
+        //checking if player is at the end of map
+        if (player.x > this.endMap) {
             this.winFlag = true
-            player.x = 10000
+            player.x = this.endMap
             if (this.winFlag) {
                 window.location.href = "../win/index.html"
             }

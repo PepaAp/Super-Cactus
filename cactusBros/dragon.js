@@ -23,19 +23,21 @@ class Dragon {
         this.dragonDistance = 0;
         this.dragonDistance2 = 0;
 
-
+        //animates the dragon
         setInterval(() => {
             this.currentFrame = (this.currentFrame + 1) % this.dragonAni.length;
         }, 200);
     }
 
     draw() {
+        //clearing the canvas and then drawing the dragon
         c2.clearRect(0, 0, canvas2.width, canvas2.height);
         c2.drawImage(this.dragonAni[this.currentFrame], this.x, this.y, this.dragWi, this.dragHi);
         this.hitbox();
     }
 
     hitbox() {
+        //checks for collision between the player and the dragon
         let dragonRight = this.x + this.dragWi;
         let dragonBottom = this.y + this.dragHi;
         let playerRight = player.playerInitialPosition + player.width;
@@ -51,6 +53,7 @@ class Dragon {
     }
 
     update() {
+        //sets starting y postion for dragon as the player position
         if (!this.playeryUpdateFlag){
             this.playeryUpdateFlag = true;
             this.y = player.y - 10;
@@ -59,6 +62,7 @@ class Dragon {
             this.dragonFlag = true
             this.draw()
             if(this.dragonFlag) {
+                //playes swoosh sound
                 setTimeout(()=> {
                     this.dragonSound()
                 }, 200)
@@ -68,6 +72,8 @@ class Dragon {
             this.dragonFlag = false
         }
 
+
+        //allignes the right speed for dragon while player is mooving
         if (player.moveRight) {
             this.x -= player.speed + this.speed +3;
         } else if (player.moveLeft) {

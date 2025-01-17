@@ -14,6 +14,7 @@ class Ladder {
 
     
     drawLadder(x, y) {
+        //drawing for ladders
         this.xPos.push(x)
         this.yPos.push(y)
         c.drawImage(ladderImg, x - player.x + player.playerInitialPosition, y, this.width, this.height)
@@ -21,6 +22,7 @@ class Ladder {
     }
 
     draw() {
+        //sets possitions of ladders
         this.drawLadder(1450-this.width, 450)
         this.drawLadder(3750-this.width, 300)
     }
@@ -32,7 +34,7 @@ class Ladder {
 
     hitbox () {
         let climbs = false;
-
+        //checks for collisions with player
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.x + player.width >= this.xPos[i] &&
                 player.x <= this.xPos[i]+this.width &&
@@ -42,7 +44,7 @@ class Ladder {
                 climbs = true;
             } 
         }
-
+        //ensures that player wont be able to go on top of a wall between the other walls while climbing and playing the ladder sound only once
         if (climbs) {
             wallGen.doubleWall = true;
         } else {

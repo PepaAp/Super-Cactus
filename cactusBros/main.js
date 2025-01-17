@@ -1,6 +1,8 @@
+//setting up the canvas
 const canvas = document.getElementById("canvas")
 const c = canvas.getContext("2d")
 
+//creating the classes variable 
 let player = new Player()
 let spider = new Spider()
 let wallGen = new Wall()
@@ -14,6 +16,7 @@ let magnet = new Magnet()
 let pipe = new Pipe()
 let spikes = new Spikes()
 
+//setting up the images
 let keyInputs = {}
 let img = new Image()
 let rightLook = new Image()
@@ -23,18 +26,19 @@ let spiderImg = new Image()
 let cloudImg = new Image()
 let houseImg = new Image() 
 
+//setting up the audio
 let dragonWarning = new Audio("./sounds/warningDragon.mp3")
 let jumpS = new Audio('./sounds/jump.mp3')
 
 
-
+//setting up the flags and deafult dragon spawning time
 let gameOverFlag = false
 let countDownFlag1 = false
 let countDownFlag2 = false
 let countDownFlag3 = false
 let dragonDelay = 5000
 
-
+//setting up the sources for images
 img.src = "./img/player.png"
 rightLook.src = "./img/playerRightSideLook.png"
 leftLook.src = "./img/playerLeftSideLook.png"
@@ -44,6 +48,7 @@ cloudImg.src = "./img/cloud.png"
 houseImg.src = "./img/house.png"
 
 
+//spawning dragon after the time (should repeat but it is not working)
 function dragonSpawn() {
     if (!gameOverFlag ) {
         setTimeout(() => {
@@ -54,7 +59,7 @@ function dragonSpawn() {
     }
 }
 
-
+//functions for reseting the restart for checkpoints and resetting
 function checkpointReset () {
     if (keyInputs["KeyU"]) {
         window.localStorage.setItem("checkPoint", 0);
@@ -73,6 +78,7 @@ function gameOverRefresh() {
     requestAnimationFrame(gameOverRefresh)
 }
 
+//alerting player about the dragon incoming 
 function dragonCountDown() {
     setTimeout(() => {
         if (!gameOverFlag && !countDownFlag1) {
@@ -105,6 +111,7 @@ function dragonCountDown() {
 }
 
 function dragonUpdate() {
+    //updating the dragon
     dragonSpawn()
     dragon.hitbox()
     dragonCountDown()
@@ -113,7 +120,7 @@ function dragonUpdate() {
 
 function main(){
     
-
+    //calling all the functions and setting up the enviroment
     hS.checkPoint()
     c.fillStyle = "skyblue"
     c.fillRect(0, 0, canvas.width, canvas.height)
@@ -155,6 +162,7 @@ function gameOverSound() {
 }
 
 function gameOver() {
+    //playeing the gameover music stopping the BG music and allowing player to restart
     if (!gameOverFlag) {
         gameOverFlag = true
         gameOverSound()
@@ -178,10 +186,10 @@ function gameOver() {
 }
 
 function gameOverBack() {
-                window.location.href = "../index.html"
+    window.location.href = "../index.html"
 }
 
-
+//listening for input keys
 document.addEventListener("keydown", function(e) {
     keyInputs[e.code] = true
 })
@@ -191,6 +199,7 @@ document.addEventListener("keyup", function(e) {
 })
 
 main()
+//spawning player at checkpoint and settin the distance to be the same for each spider
 spider.distance *= spider.xPos.length
 player.backGroundMusic()
 gameOverRefresh()

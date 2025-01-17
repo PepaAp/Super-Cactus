@@ -10,6 +10,7 @@ class Magnet {
     }
 
     draw(x, y) {
+        //pushing the x and y positions to an array and drawing the magnet
         if (!this.xPos.includes(x) || !this.yPos.includes(y)) {
             this.xPos.push(x)
             this.yPos.push(y)
@@ -32,11 +33,13 @@ class Magnet {
     }
 
     hitbox() {
+        //check for collisons with magnet
         for (let i = 0; i < this.xPos.length; i++) {
             if (player.y <= this.yPos[i] + this.he && 
                 this.xPos[i] <= player.x + player.width &&
                 player.y + player.height >= this.yPos[i] &&
                 this.xPos[i] + this.wi >= player.x) {
+                    //wont allow player to go through magnet from sides
                     if (player.x + player.width - this.xPos[i] < this.yPos[i] + this.he - player.y ||
                         this.xPos[i] + this.wi - player.x <this.yPos[i] + this.he - player.y) {
                             if (player.x + player.width - this.xPos[i] < this.wi / 2) {
@@ -47,6 +50,7 @@ class Magnet {
                                 return
                             }
                     } else {
+                        //setting the top collisions and allowing player to jump and let go
                         player.yVelocity = 0
                         player.gravity = 1.5
                         player.y = this.yPos[i] + this.he -1.5
@@ -63,6 +67,7 @@ class Magnet {
 
                     
                 } else {
+                    //resets gravity
                     player.gravity = 0.5
                 }
         } 

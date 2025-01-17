@@ -4,6 +4,7 @@ class Cloud {
         //randomizes the clouds position
         this.x = this.cloudRandomizer(20, canvas.width)
         this.y = this.cloudRandomizer(50, 400)
+        this.number = 7
 
         this.cloudWidth = 159
         this.cloudHeight = 118
@@ -42,13 +43,14 @@ let clouds = []
 let cloud = new Cloud()
 
 function generateClouds(numClouds) {
+    //generates requested number of clouds on the screen
     for(let i = 0; i < numClouds; i++) {
         clouds.push(new Cloud())
     }
 }
 
 function outCloudReplacement() {
-    
+    //checks if clouds are overlapping
     for (let i = 0; i < clouds.length; i++) {
 
         if (clouds[i].x + clouds[i].cloudWidth < player.x) {
@@ -64,9 +66,10 @@ function outCloudReplacement() {
 }
 
 function drawClouds() {
+    //for each generated cloud it will be drawn
     clouds.forEach(cloud => cloud.draw())
 
 }
 
-generateClouds(7)
+generateClouds(cloud.number)
 
